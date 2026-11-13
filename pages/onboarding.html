@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spirits Global | Institutional Client Onboarding</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="../js/config/tailwind.onboarding.js"></script>
+
+  <link rel="stylesheet" href="../css/onboarding.css">
+</head>
+<body class="antialiased selection:bg-gold-400 selection:text-obsidian-950">
+
+  <!-- TOP AMBIENT HEADER (CLIENT-ONLY, NO ADMIN LINKS) -->
+  <header class="relative overflow-hidden border-b border-gold-400/20 bg-obsidian-950/90 backdrop-blur-md sticky top-0 z-40 no-print">
+    <!-- Decorative Background Mandala -->
+    <div class="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 opacity-15">
+      <svg class="w-96 h-96 mandala-spin" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="90" stroke="#D4AF37" stroke-width="0.6" stroke-dasharray="3 3"/>
+        <circle cx="100" cy="100" r="72" stroke="#D4AF37" stroke-width="0.8"/>
+        <circle cx="100" cy="100" r="54" stroke="#D4AF37" stroke-width="0.6"/>
+        <polygon points="100,15 173,142 27,142" stroke="#D4AF37" stroke-width="0.7" fill="none"/>
+        <polygon points="100,185 173,58 27,58" stroke="#D4AF37" stroke-width="0.7" fill="none"/>
+        <circle cx="100" cy="100" r="28" stroke="#F3E5AB" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
+      <div class="flex items-center justify-between gap-4">
+        
+        <!-- Brand Identity -->
+        <div class="flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-full bg-obsidian-800 gold-border-glow flex items-center justify-center relative">
+            <svg class="w-6 h-6 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/>
+              <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"/>
+              <path d="M19 11h2m-1 -1v2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="font-serif text-xl sm:text-2xl tracking-wider font-bold gold-gradient-text">SPIRITS GLOBAL</h1>
+              <span class="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-gold-400/15 text-gold-300 border border-gold-400/30 font-semibold">Institutional Onboarding</span>
+            </div>
+            <p class="text-[11px] text-gold-200/70 tracking-wide hidden sm:block">Acoustic Sound Healing • Guided Meditation • Classical Yogic Science</p>
+          </div>
+        </div>
+
+        <!-- Right Side: 432Hz Soundbed & Confidential Portal Badge -->
+        <div class="flex items-center gap-3">
+          <button id="sound-toggle-btn" onclick="toggleResonanceDrone()" class="px-3.5 py-1.5 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-gold-400/30 text-xs text-gold-200 flex items-center gap-2 transition-all" title="Toggle 432Hz Himalayan Singing Bowl Resonance">
+            <div class="flex items-center gap-0.5 h-3" id="wave-visualizer">
+              <span class="w-0.5 h-2.5 bg-gold-400/60 rounded-full"></span>
+              <span class="w-0.5 h-3.5 bg-gold-400/60 rounded-full"></span>
+              <span class="w-0.5 h-2 bg-gold-400/60 rounded-full"></span>
+              <span class="w-0.5 h-3 bg-gold-400/60 rounded-full"></span>
+            </div>
+            <span id="sound-btn-text" class="hidden sm:inline">432Hz Resonance</span>
+          </button>
+          
+          <div class="px-3 py-1.5 rounded-xl bg-gold-400/10 border border-gold-400/30 text-xs text-gold-300 font-semibold flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Official Client Portal</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- LUXURY NOTICE BANNER -->
+  <div class="bg-gradient-to-r from-obsidian-950 via-obsidian-900 to-obsidian-950 border-b border-gold-400/20 py-2 px-4 no-print">
+    <div class="max-w-6xl mx-auto flex items-center justify-between text-xs">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-2 w-2 rounded-full bg-gold-400 animate-ping"></span>
+        <span class="text-gold-200 font-medium">Standard Institutional Session: <strong class="text-gold-300 font-mono">$1,111 USD</strong> | Yearly Partnership: <strong class="text-gold-300 font-mono">$11,111 USD</strong></span>
+      </div>
+      <span class="text-gold-200/60 text-[11px] hidden md:inline">Have a private invitation code? Enter in Step 03 to unlock your complimentary waiver.</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER: CLIENT ONBOARDING ONLY -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Hero Stepper Header -->
+    <div class="bg-obsidian-800/80 gold-border-glow rounded-2xl p-6 sm:p-8 mb-8 text-center">
+      <span class="text-[10px] uppercase tracking-[0.25em] text-gold-400 font-bold block mb-1">Confidential Institutional Onboarding</span>
+      <h2 class="font-serif text-2xl sm:text-4xl font-bold gold-gradient-text">Enterprise, Campus &amp; Luxury Hospitality Registration</h2>
+      <p class="text-xs sm:text-sm text-gold-200/70 max-w-2xl mx-auto mt-2 leading-relaxed">
+        Custom nervous system regulation for high-performing leaders, scholars, and faculty rooted in the authentic Indian Knowledge System (IKS).
+      </p>
+
+      <!-- Step Indicators -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 max-w-3xl mx-auto">
+        <button onclick="goToFormStep(1)" id="step-indicator-1" class="text-left p-3 rounded-xl border border-gold-400 bg-gold-400/15 transition-all">
+          <div class="text-[10px] uppercase tracking-wider text-gold-400 font-bold">Step 01</div>
+          <div class="text-sm font-semibold text-gold-100 mt-0.5">Organization</div>
+          <div class="text-[11px] text-gold-200/60">Credentials &amp; Scale</div>
+        </button>
+        <button onclick="goToFormStep(2)" id="step-indicator-2" class="text-left p-3 rounded-xl border border-gold-400/20 bg-obsidian-900/60 opacity-60 transition-all">
+          <div class="text-[10px] uppercase tracking-wider text-gold-400 font-bold">Step 02</div>
+          <div class="text-sm font-semibold text-gold-100 mt-0.5">IKS Needs</div>
+          <div class="text-[11px] text-gold-200/60">Modalities &amp; Format</div>
+        </button>
+        <button onclick="goToFormStep(3)" id="step-indicator-3" class="text-left p-3 rounded-xl border border-gold-400/20 bg-obsidian-900/60 opacity-60 transition-all">
+          <div class="text-[10px] uppercase tracking-wider text-gold-400 font-bold">Step 03</div>
+          <div class="text-sm font-semibold text-gold-100 mt-0.5">Program &amp; Code</div>
+          <div class="text-[11px] text-gold-200/60">Tier / Pilot Voucher</div>
+        </button>
+        <button id="step-indicator-4" class="text-left p-3 rounded-xl border border-gold-400/20 bg-obsidian-900/60 opacity-60 transition-all cursor-default">
+          <div class="text-[10px] uppercase tracking-wider text-gold-400 font-bold">Step 04</div>
+          <div class="text-sm font-semibold text-gold-100 mt-0.5">Session Pass</div>
+          <div class="text-[11px] text-gold-200/60">Instant Confirmation</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- FORM WRAPPER -->
+    <div class="bg-obsidian-800/90 gold-border-glow rounded-2xl p-6 sm:p-10">
+      <form id="client-onboarding-form" onsubmit="handleFormSubmit(event)">
+        
+        <!-- ==========================================
+             STEP 1: ORGANIZATION CREDENTIALS
+             ========================================== -->
+        <div id="form-step-1" class="space-y-6">
+          <div class="border-b border-gold-400/20 pb-4">
+            <span class="text-xs uppercase tracking-widest text-gold-400 font-semibold">Step 01 of 03</span>
+            <h3 class="font-serif text-xl sm:text-2xl text-gold-100 font-semibold mt-0.5">Organization &amp; Decision-Maker Profile</h3>
+            <p class="text-xs text-gold-200/60 mt-1">Please provide official institutional details for priority processing.</p>
+          </div>
+
+          <!-- Sector Selection Cards -->
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-gold-300 font-semibold mb-2.5">Select Institutional Sector *</label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div onclick="selectSector('MNC / Corporate Enterprise')" id="sector-card-mnc" class="sector-card cursor-pointer p-4 rounded-xl bg-obsidian-900 border border-gold-400/25 hover:border-gold-400/60 transition-all gold-border-active">
+                <div class="text-xl mb-1">🏢</div>
+                <div class="font-semibold text-sm text-gold-100">Enterprise &amp; MNC</div>
+                <div class="text-[11px] text-gold-200/60 mt-0.5">Executive retreats, burnout prevention &amp; high-output focus</div>
+              </div>
+              <div onclick="selectSector('University / Educational Institute')" id="sector-card-uni" class="sector-card cursor-pointer p-4 rounded-xl bg-obsidian-900 border border-gold-400/25 hover:border-gold-400/60 transition-all">
+                <div class="text-xl mb-1">🎓</div>
+                <div class="font-semibold text-sm text-gold-100">University / Campus</div>
+                <div class="text-[11px] text-gold-200/60 mt-0.5">IITs, IIMs, universities &amp; student cognitive focus</div>
+              </div>
+              <div onclick="selectSector('Luxury Hotel & Wellness Resort')" id="sector-card-hotel" class="sector-card cursor-pointer p-4 rounded-xl bg-obsidian-900 border border-gold-400/25 hover:border-gold-400/60 transition-all">
+                <div class="text-xl mb-1">🏨</div>
+                <div class="font-semibold text-sm text-gold-100">Luxury Hospitality</div>
+                <div class="text-[11px] text-gold-200/60 mt-0.5">Signature guest sound healing &amp; bespoke wellness residencies</div>
+              </div>
+            </div>
+            <input type="hidden" id="input-sector" value="MNC / Corporate Enterprise" />
+          </div>
+
+          <!-- Org Name & Contact Name -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs text-gold-200/90 font-medium mb-1.5">Organization / Institution Name *</label>
+              <input type="text" id="input-org" required placeholder="e.g., IIT Kharagpur, Microsoft, Taj Hotels" class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-gold-400/30 text-gold-100 placeholder-gold-200/30 text-sm focus:outline-none focus:border-gold-400" />
+            </div>
+            <div>
+              <label class="block text-xs text-gold-200/90 font-medium mb-1.5">Point of Contact Full Name &amp; Title *</label>
+              <input type="text" id="input-name" required placeholder="e.g., Dr. A. Sharma (Dean) / Priya Roy (CHRO)" class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-gold-400/30 text-gold-100 placeholder-gold-200/30 text-sm focus:outline-none focus:border-gold-400" />
+            </div>
+          </div>
+
+          <!-- Email & Phone -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs text-gold-200/90 font-medium mb-1.5">Official Organization Email *</label>
+              <input type="email" id="input-email" oninput="validateCorporateEmail(this.value)" required placeholder="name@institution.edu / .com" class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-gold-400/30 text-gold-100 placeholder-gold-200/30 text-sm focus:outline-none focus:border-gold-400" />
+              <p id="email-domain-hint" class="text-[11px] text-gold-400/80 mt-1 hidden">⚠️ Personal email detected. Institutional email domain (@company.com / @ac.in) recommended for priority verification.</p>
+            </div>
+            <div>
+              <label class="block text-xs text-gold-200/90 font-medium mb-1.5">Direct Phone / WhatsApp Contact *</label>
+              <input type="tel" id="input-phone" required placeholder="+1 (555) 000-0000 or +91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-gold-400/30 text-gold-100 placeholder-gold-200/30 text-sm focus:outline-none focus:border-gold-400" />
+            </div>
+          </div>
+
+          <!-- Cohort Volume & Location -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs text-gold-200/90 font-medium mb-1.5">Expected Participant Cohort Size *</label>
+              <select id="input-volume" class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-gold-400/30 text-gold-100 text-sm focus:outline-none focus:border-gold-400">
+                <option value="Under 50 (Executive Leadership Cohort)">Under 50 (Executive Leadership Cohort)</option>
+                <option value="51 – 200 (Department / Retreat Batch)" selected>51 – 200 (Department / Retreat Batch)</option>
+                <option value="201 – 500 (Campus Hall / Townhall Batch)">201 – 500 (Campus Hall / Townhall Batch)</option>
+                <option value="500+ (Full Institution / Campus Convocation)">500+ (Full Institution / Campus Convocation)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs text-gold-200/90 font-medium mb-1.5">City &amp; Country / Campus Location *</label>
+              <input type="text" id="input-location" required placeholder="e.g., Boston, MA / New Delhi / London" class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-gold-400/30 text-gold-100 placeholder-gold-200/30 text-sm focus:outline-none focus:border-gold-400" />
+            </div>
+          </div>
+
+          <div class="pt-4 flex justify-end">
+            <button type="button" onclick="goToFormStep(2)" class="gold-btn px-7 py-3 rounded-xl text-sm flex items-center gap-2">
+              <span>Next: IKS Wellness Assessment</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 2: WELLNESS NEEDS & MODALITY
+             ========================================== -->
+        <div id="form-step-2" class="space-y-6 hidden">
+          <div class="border-b border-gold-400/20 pb-4">
+            <span class="text-xs uppercase tracking-widest text-gold-400 font-semibold">Step 02 of 03</span>
+            <h3 class="font-serif text-xl sm:text-2xl text-gold-100 font-semibold mt-0.5">IKS Modalities &amp; Physiological Diagnostics</h3>
+            <p class="text-xs text-gold-200/60 mt-1">Select the stressors your team or students encounter and your preferred intervention.</p>
+          </div>
+
+          <!-- Primary Challenges -->
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-gold-300 font-semibold mb-2.5">Primary Challenges Facing Your People (Select all that apply) *</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <label class="flex items-center gap-3 p-3.5 rounded-xl bg-obsidian-900 border border-gold-400/25 cursor-pointer hover:border-gold-400/60">
+                <input type="checkbox" name="challenges" value="Workplace / Academic Burnout" checked class="accent-amber-500 w-4 h-4" />
+                <span class="text-xs sm:text-sm text-gold-100">Workplace / Academic Burnout</span>
+              </label>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl bg-obsidian-900 border border-gold-400/25 cursor-pointer hover:border-gold-400/60">
+                <input type="checkbox" name="challenges" value="High Cortisol & Nervous System Stress" checked class="accent-amber-500 w-4 h-4" />
+                <span class="text-xs sm:text-sm text-gold-100">High Cortisol &amp; Nervous System Stress</span>
+              </label>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl bg-obsidian-900 border border-gold-400/25 cursor-pointer hover:border-gold-400/60">
+                <input type="checkbox" name="challenges" value="Decision Fatigue & Low Cognitive Focus" class="accent-amber-500 w-4 h-4" />
+                <span class="text-xs sm:text-sm text-gold-100">Decision Fatigue &amp; Low Cognitive Focus</span>
+              </label>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl bg-obsidian-900 border border-gold-400/25 cursor-pointer hover:border-gold-400/60">
+                <input type="checkbox" name="challenges" value="Sedentary Desk & Postural Tension" class="accent-amber-500 w-4 h-4" />
+                <span class="text-xs sm:text-sm text-gold-100">Sedentary Desk &amp; Postural Tension</span>
+              </label>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl bg-obsidian-900 border border-gold-400/25 cursor-pointer hover:border-gold-400/60">
+                <input type="checkbox" name="challenges" value="Talent Retention & Team Cohesion" class="accent-amber-500 w-4 h-4" />
+                <span class="text-xs sm:text-sm text-gold-100">Talent Retention &amp; Team Cohesion</span>
+              </label>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl bg-obsidian-900 border border-gold-400/25 cursor-pointer hover:border-gold-400/60">
+                <input type="checkbox" name="challenges" value="Luxury Guest Holistic Differentiation" class="accent-amber-500 w-4 h-4" />
+                <span class="text-xs sm:text-sm text-gold-100">Luxury Guest Holistic Differentiation</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Core Modality Radio Cards -->
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-gold-300 font-semibold mb-2.5">Desired Indian Knowledge System (IKS) Modality *</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="flex items-start gap-3 p-4 rounded-xl bg-obsidian-900 border border-gold-400/40 cursor-pointer hover:border-gold-400">
+                <input type="radio" name="modality" value="Full IKS Hybrid Flagship (Sound + Meditation + Yoga)" checked class="mt-1 accent-amber-500" />
+                <div>
+                  <div class="text-sm font-semibold text-gold-200">✨ Full IKS Hybrid Flagship (Recommended)</div>
+                  <div class="text-[11px] text-gold-200/65 mt-0.5">Complete fusion of Acoustic Sound Healing, Dhyana Meditation &amp; Classical Asana.</div>
+                </div>
+              </label>
+              <label class="flex items-start gap-3 p-4 rounded-xl bg-obsidian-900 border border-gold-400/25 cursor-pointer hover:border-gold-400">
+                <input type="radio" name="modality" value="Acoustic Sound Healing & Brainwave Entrainment" class="mt-1 accent-amber-500" />
+                <div>
+                  <div class="text-sm font-semibold text-gold-200">🔔 Acoustic Sound Healing Therapy</div>
+                  <div class="text-[11px] text-gold-200/65 mt-0.5">Handcrafted Himalayan bronze singing bowls shifting brainwaves from high-beta to alpha/theta calm.</div>
+                </div>
+              </label>
+              <label class="flex items-start gap-3 p-4 rounded-xl bg-obsidian-900 border border-gold-400/25 cursor-pointer hover:border-gold-400">
+                <input type="radio" name="modality" value="Guided Corporate Meditation & Nāda Yoga" class="mt-1 accent-amber-500" />
+                <div>
+                  <div class="text-sm font-semibold text-gold-200">🧘 Guided Corporate Meditation &amp; Pranayama</div>
+                  <div class="text-[11px] text-gold-200/65 mt-0.5">Executive emotional intelligence, breathwork &amp; sustained cognitive stamina.</div>
+                </div>
+              </label>
+              <label class="flex items-start gap-3 p-4 rounded-xl bg-obsidian-900 border border-gold-400/25 cursor-pointer hover:border-gold-400">
+                <input type="radio" name="modality" value="Classical Yogic Science & Postural Vitality" class="mt-1 accent-amber-500" />
+                <div>
+                  <div class="text-sm font-semibold text-gold-200">🌿 Classical Yogic Science &amp; Spine Vitality</div>
+                  <div class="text-[11px] text-gold-200/65 mt-0.5">Spinal decompression, ergonomic tension release &amp; deep somatic relaxation.</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Format & Target Window -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs text-gold-200/90 font-medium mb-1.5">Preferred Delivery Format *</label>
+              <select id="input-format" class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-gold-400/30 text-gold-100 text-sm focus:outline-none focus:border-gold-400">
+                <option value="On-Campus / On-Site Immersive Session">On-Campus / On-Site Immersive Session</option>
+                <option value="Hybrid (On-Site + Global Live Stream)">Hybrid (On-Site + Global Live Stream)</option>
+                <option value="Virtual High-Definition Acoustic Session">Virtual High-Definition Acoustic Session</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs text-gold-200/90 font-medium mb-1.5">Target Session Launch Date *</label>
+              <input type="date" id="input-date" required class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-gold-400/30 text-gold-100 text-sm focus:outline-none focus:border-gold-400" />
+            </div>
+          </div>
+
+          <div class="pt-4 flex justify-between">
+            <button type="button" onclick="goToFormStep(1)" class="px-5 py-2.5 rounded-xl border border-gold-400/30 text-gold-200 text-sm hover:bg-obsidian-700">
+              ← Back
+            </button>
+            <button type="button" onclick="goToFormStep(3)" class="gold-btn px-7 py-3 rounded-xl text-sm flex items-center gap-2">
+              <span>Next: Program Tier &amp; Verification</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 3: PRICING TIER & CUSTOM PROMO CODE
+             ========================================== -->
+        <div id="form-step-3" class="space-y-6 hidden">
+          <div class="border-b border-gold-400/20 pb-4">
+            <span class="text-xs uppercase tracking-widest text-gold-400 font-semibold">Step 03 of 03</span>
+            <h3 class="font-serif text-xl sm:text-2xl text-gold-100 font-semibold mt-0.5">Program Tier &amp; Custom Voucher Verification</h3>
+            <p class="text-xs text-gold-200/60 mt-1">Select your institutional engagement tier or enter your private partner voucher code.</p>
+          </div>
+
+          <!-- Empty Custom Code Verification Box -->
+          <div class="p-5 rounded-2xl bg-obsidian-900 border border-gold-400/35 space-y-3">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-gold-300 block">Private Partner Invitation / Pilot Code</span>
+                <p class="text-xs text-gold-200/65 mt-0.5">If you were provided with an invitation code by Spirits Global, enter it below to unlock a 100% complimentary session.</p>
+              </div>
+              <div class="flex items-center gap-2 w-full sm:w-auto">
+                <!-- LEAVE COUPON FORM EMPTY AS REQUESTED -->
+                <input type="text" id="input-promo" value="" placeholder="Enter Custom Code" class="px-3.5 py-2.5 rounded-xl bg-obsidian-950 border border-gold-400/40 text-gold-300 font-mono text-xs uppercase w-full sm:w-44 focus:outline-none focus:border-gold-400" />
+                <button type="button" onclick="evaluatePromoCode()" class="shrink-0 px-4 py-2.5 rounded-xl bg-gold-400/20 hover:bg-gold-400/30 border border-gold-400/50 text-gold-200 text-xs font-bold transition-all">Apply Code</button>
+              </div>
+            </div>
+            <div id="promo-status-msg" class="text-xs text-gold-200/50 italic">Standard institutional fees apply ($1,111 per session or $11,111 yearly). Entering a verified custom code unlocks $0 pilot onboarding.</div>
+          </div>
+
+          <!-- Institutional Tiers: $1,111 Per Session vs $11,111 Yearly vs $0 Waiver -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Standard Per-Institution Session: $1,111 -->
+            <div onclick="selectPricingMode('SINGLE_SESSION')" id="tier-card-single" class="cursor-pointer p-5 rounded-2xl bg-obsidian-900 border border-gold-400/30 gold-border-active transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] uppercase tracking-wider text-gold-400 font-bold px-2 py-0.5 rounded bg-gold-400/10 border border-gold-400/30">Standard Master Session</span>
+                <span class="text-base font-bold font-mono text-gold-300">$1,111 USD</span>
+              </div>
+              <div class="font-serif text-lg font-bold text-gold-100 mt-2">Per-Institution Master Session</div>
+              <p class="text-xs text-gold-200/65 mt-1.5 leading-relaxed">
+                Single comprehensive 60–90 minute on-campus or virtual Master Sound Healing &amp; Yogic immersion for up to 500 participants, complete with organizational diagnostics.
+              </p>
+            </div>
+
+            <!-- Yearly Institutional Retainer: $11,111 -->
+            <div onclick="selectPricingMode('YEARLY_RETAINER')" id="tier-card-yearly" class="cursor-pointer p-5 rounded-2xl bg-obsidian-900 border border-gold-400/30 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] uppercase tracking-wider text-gold-400 font-bold px-2 py-0.5 rounded bg-gold-400/10 border border-gold-400/30">Annual Partnership SLA</span>
+                <span class="text-base font-bold font-mono text-emerald-400">$11,111 USD</span>
+              </div>
+              <div class="font-serif text-lg font-bold text-gold-100 mt-2">Yearly Institutional Partnership</div>
+              <p class="text-xs text-gold-200/65 mt-1.5 leading-relaxed">
+                Full-year sustained corporate/campus wellness calendar: 12 Master Sound Baths, executive private sessions, biometric stress tracking &amp; priority scheduling.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Complimentary Voucher Banner (Appears when custom code is verified) -->
+          <div id="complimentary-voucher-banner" class="hidden p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 flex items-center justify-between gap-4">
+            <div>
+              <div class="text-xs font-bold text-emerald-300 uppercase tracking-wider">✓ Custom Invitation Code Applied</div>
+              <div class="text-xs text-emerald-200/80 mt-0.5">Your complimentary pilot session fee of <span class="line-through text-emerald-400/60">$1,111</span> has been waived to <strong class="text-emerald-300 font-mono">$0 USD</strong>.</div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">$0 Waived</span>
+          </div>
+
+          <!-- Billing & Payment Settlement (Active for $1,111 and $11,111) -->
+          <div id="billing-payment-module" class="p-5 rounded-2xl bg-obsidian-950 border border-gold-400/30 space-y-4">
+            <div class="flex items-center justify-between border-b border-gold-400/20 pb-3">
+              <div>
+                <h4 class="text-xs font-bold text-gold-200 uppercase tracking-wider">Institutional Billing &amp; Settlement Preference</h4>
+                <p class="text-[11px] text-gold-200/60">Official corporate tax invoicing, Wire Transfer / PO Net-15 or Corporate Card</p>
+              </div>
+              <span id="billing-amount-display" class="font-mono text-sm font-bold text-gold-400">$1,111 USD</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[11px] text-gold-200/80 mb-1">Organization Tax ID / GSTIN / VAT (Optional)</label>
+                <input type="text" id="input-tax-id" placeholder="e.g., US-EIN / EU-VAT / GSTIN" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-900 border border-gold-400/30 text-xs text-gold-100 uppercase font-mono focus:outline-none focus:border-gold-400" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-gold-200/80 mb-1">Payment / Settlement Method *</label>
+                <select id="input-payment-method" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian-900 border border-gold-400/30 text-xs text-gold-100 focus:outline-none focus:border-gold-400">
+                  <option value="Official Institutional PO (Net-15 Invoice)">Generate Tax Invoice &amp; Official PO (Net-15)</option>
+                  <option value="Corporate Bank Wire / NEFT Transfer">Corporate Bank Wire / NEFT Transfer</option>
+                  <option value="Corporate Credit Card (Stripe B2B)">Corporate Credit Card (Stripe B2B Checkout)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quality & Feedback Commitment -->
+          <label class="flex items-start gap-3 p-4 rounded-xl bg-gold-400/10 border border-gold-400/30 cursor-pointer">
+            <input type="checkbox" id="input-review-pledge" required checked class="mt-1 accent-amber-500 w-4 h-4" />
+            <div class="text-xs text-gold-100 leading-relaxed">
+              <strong class="text-gold-300">Quality &amp; Experience Commitment:</strong> We agree to complete Spirits Global's 30-second post-session assessment to benchmark institutional stress reduction and biometric outcomes.
+            </div>
+          </label>
+
+          <div class="pt-4 flex justify-between items-center">
+            <button type="button" onclick="goToFormStep(2)" class="px-5 py-2.5 rounded-xl border border-gold-400/30 text-gold-200 text-sm hover:bg-obsidian-700">
+              ← Back
+            </button>
+            <button type="submit" id="submit-onboarding-btn" class="gold-btn px-8 py-3.5 rounded-xl text-sm flex items-center gap-2 shadow-lg">
+              <span>Complete Registration &amp; Issue Session Pass</span>
+              <span>✨</span>
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- ==========================================
+           STEP 4: INSTANT GOLDEN B2B SESSION PASS
+           ========================================== -->
+      <div id="form-step-4" class="hidden space-y-6">
+        <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-obsidian-900 via-obsidian-950 to-obsidian-900 border-2 border-gold-400 shadow-2xl relative overflow-hidden">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gold-400/30 pb-5">
+            <div>
+              <span class="text-[11px] uppercase tracking-[0.25em] text-emerald-400 font-bold block">✓ Registration Confirmed &amp; Verified</span>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold gold-gradient-text mt-1">SPIRITS GLOBAL — INSTITUTIONAL SESSION PASS</h3>
+            </div>
+            <div class="text-left sm:text-right">
+              <span class="text-[10px] uppercase tracking-widest text-gold-200/60 block">Booking Reference ID</span>
+              <span id="pass-booking-id" class="font-mono text-lg font-bold text-gold-300">SG-2026-8812</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 py-6 border-b border-gold-400/20 text-xs">
+            <div>
+              <span class="text-gold-200/50 uppercase tracking-wider block text-[10px]">Partner Institution</span>
+              <strong id="pass-org" class="text-sm text-gold-100 block mt-0.5">IIT Kharagpur</strong>
+              <span id="pass-sector" class="text-gold-400 text-[11px]">University / Educational Institute</span>
+            </div>
+            <div>
+              <span class="text-gold-200/50 uppercase tracking-wider block text-[10px]">Primary Modality &amp; Scale</span>
+              <strong id="pass-modality" class="text-sm text-gold-100 block mt-0.5">Full IKS Hybrid Flagship</strong>
+              <span id="pass-format" class="text-gold-200/75 text-[11px]">On-Campus • 201–500 Participants</span>
+            </div>
+            <div>
+              <span class="text-gold-200/50 uppercase tracking-wider block text-[10px]">Program Tier &amp; Billing</span>
+              <strong id="pass-tier" class="text-sm text-gold-300 block mt-0.5">$1,111 USD (Per-Institution Session)</strong>
+              <span id="pass-date" class="text-gold-200/75 text-[11px]">Target Window: 2026-11-25</span>
+            </div>
+          </div>
+
+          <div class="pt-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-gold-200/75">
+              Your session pass is active. Our Master Facilitators will coordinate technical and logistical staging.
+            </div>
+            <div class="flex flex-wrap gap-3 w-full sm:w-auto justify-end">
+              <button type="button" onclick="window.print()" class="px-4 py-2.5 rounded-xl border border-gold-400/40 text-gold-200 text-xs font-semibold hover:bg-obsidian-800">
+                🖨️ Print Pass
+              </button>
+              <button type="button" onclick="resetForm()" class="gold-btn px-5 py-2.5 rounded-xl text-xs font-bold">
+                + Register Another Cohort
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 z-50 hidden bg-obsidian-900 border-2 border-gold-400 text-gold-100 px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 text-xs font-semibold">
+    <span class="text-lg">✨</span>
+    <span id="toast-message">Action completed successfully!</span>
+  </div>
+
+  <!-- ONBOARDING MODULES -->
+  <script src="../utils/audio.js"></script>
+  <script src="../utils/storage.js"></script>
+  <script src="../js/data/promo-codes.js"></script>
+  <script src="../js/services/crm-store.js"></script>
+  <script src="../components/toast.onboarding.js"></script>
+  <script src="../js/pages/onboarding/pricing.js"></script>
+  <script src="../js/pages/onboarding/form-flow.js"></script>
+  <script src="../js/services/resonance-drone.js"></script>
+  <script src="../js/pages/onboarding/init.js"></script>
+</body>
+</html>

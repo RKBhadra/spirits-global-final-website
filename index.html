@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPIRITS GLOBAL | Executive Acoustic Entrainment & Corporate Wellness</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cormorant Garamond (Editorial Luxury Serif) & Inter (Modern UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind Configuration with Custom Luxury Palette -->
+  <script src="js/config/tailwind.home.js"></script>
+
+  <link rel="stylesheet" href="css/home.css">
+
+  <!-- Critical image fallback: must execute before body images load -->
+  <script src="js/data/photo-manifest.js"></script>
+  <script src="js/services/photo-store.js"></script>
+  <script src="components/image-fallback.js"></script>
+</head>
+<body class="bg-obsidian-950 text-neutral-300 font-sans selection:bg-gold-500 selection:text-black antialiased overflow-x-hidden">
+
+  <!-- Ambient Sound Generator Notification Toast -->
+  <div id="soundToast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-500 ease-out flex items-center gap-3 bg-obsidian-900 border border-gold-500/40 text-champagne px-5 py-3.5 rounded-2xl shadow-2xl backdrop-blur-xl">
+    <div class="w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400">
+      <svg class="w-4 h-4 animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10" stroke-opacity="0.3"></circle>
+        <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor"></path>
+      </svg>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-widest text-gold-400 font-medium">Harmonic Resonance</p>
+      <p class="text-xs text-neutral-400" id="soundToastText">Resonant 432Hz Himalayan Chime Active</p>
+    </div>
+  </div>
+
+  <!-- Top Luxury Header & Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-gold-500/10 glass-luxury" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo / Monogram -->
+      <a href="#hero" class="flex items-center gap-3 group focus:outline-none">
+        <div class="relative w-10 h-10 rounded-full border border-gold-500/40 flex items-center justify-center bg-obsidian-900 group-hover:border-gold-400 transition-colors">
+          <!-- Monogram Crest -->
+          <svg class="w-5 h-5 text-gold-400" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="50" cy="50" r="44" stroke-dasharray="3 3"/>
+            <circle cx="50" cy="50" r="30" stroke="currentColor"/>
+            <path d="M50 15 L50 85 M15 50 L85 50" stroke="currentColor" stroke-opacity="0.5"/>
+            <polygon points="50,28 65,50 50,72 35,50" stroke="currentColor" fill="none"/>
+          </svg>
+          <div class="absolute inset-0 rounded-full bg-gold-500/10 blur-sm group-hover:bg-gold-500/20 transition-all"></div>
+        </div>
+        <div>
+          <span class="font-cinzel text-base md:text-lg tracking-[0.28em] text-champagne font-semibold block leading-tight">SPIRITS GLOBAL</span>
+          <span class="text-[9px] uppercase tracking-[0.3em] text-gold-500/80 block">Atelier For Acoustic Medicine</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.2em] font-medium text-neutral-400">
+        <a href="#ethos" class="hover:text-gold-400 transition-colors">Ethos</a>
+        <a href="#disciplines" class="hover:text-gold-400 transition-colors">Three Disciplines</a>
+        <a href="#clinical" class="hover:text-gold-400 transition-colors">Resonance Science</a>
+        <a href="#gallery" class="hover:text-gold-400 transition-colors">Experience Gallery</a>
+        <a href="#programs" class="hover:text-gold-400 transition-colors">Executive Suites</a>
+      </nav>
+
+      <!-- Action Area: Acoustic Trigger & Concierge CTA -->
+      <div class="hidden sm:flex items-center gap-3">
+        <!-- Sync Local Photos (10) Trigger -->
+        <button onclick="openPhotoSyncStudio()" class="px-3.5 py-2 rounded-full border border-gold-500/30 bg-obsidian-900/90 text-champagne hover:border-gold-400 hover:text-gold-400 text-[11px] tracking-wider uppercase flex items-center gap-2 transition-all" title="Sync your 10 local photographs or export self-contained HTML">
+          <svg class="w-3.5 h-3.5 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span>Sync Local Photos (<span id="navSyncedCount">10</span>)</span>
+        </button>
+
+        <!-- Interactive 432Hz Soundbath Button -->
+        <button id="audioTriggerBtn" onclick="playSingingBowl(432, 'Fundamental 432Hz Himalayan Bowl')" class="group relative px-3.5 py-2 rounded-full border border-gold-500/30 bg-obsidian-900/90 text-gold-400 hover:border-gold-400 text-xs tracking-wider flex items-center gap-2 transition-all hover:shadow-[0_0_15px_rgba(212,175,55,0.25)]" title="Click to synthesize genuine 432Hz Himalayan Singing Bowl frequency">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-gold-500"></span>
+          </span>
+          <svg class="w-3.5 h-3.5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+          <span class="text-[11px] font-medium tracking-widest uppercase">432Hz Sound Tone</span>
+        </button>
+
+        <!-- Executive Booking Modal Trigger -->
+        <button onclick="openConsultationModal()" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-obsidian-950 font-semibold text-xs tracking-[0.16em] uppercase hover:brightness-110 transition-all shadow-[0_0_20px_rgba(212,175,55,0.25)]">
+          Request Dossier
+        </button>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-neutral-400 hover:text-gold-400 focus:outline-none" aria-label="Toggle navigation">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-obsidian-900/95 border-b border-gold-500/20 px-6 py-6 space-y-4">
+      <a href="#ethos" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-neutral-300 hover:text-gold-400">Ethos</a>
+      <a href="#disciplines" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-neutral-300 hover:text-gold-400">Three Disciplines</a>
+      <a href="#clinical" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-neutral-300 hover:text-gold-400">Resonance Science</a>
+      <a href="#gallery" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-neutral-300 hover:text-gold-400">Experience Gallery</a>
+      <a href="#programs" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-neutral-300 hover:text-gold-400">Executive Suites</a>
+      <div class="pt-4 border-t border-gold-500/10 flex flex-col gap-3">
+        <button onclick="openPhotoSyncStudio(); toggleMobileMenu();" class="w-full py-2.5 rounded-full border border-gold-500/40 text-champagne text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+          <span>Sync Local Photos (10)</span>
+        </button>
+        <button onclick="playSingingBowl(432, 'Fundamental 432Hz Himalayan Bowl'); toggleMobileMenu();" class="w-full py-2.5 rounded-full border border-gold-500/40 text-gold-400 text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+          <span>Synthesize 432Hz Resonance</span>
+        </button>
+        <button onclick="openConsultationModal(); toggleMobileMenu();" class="w-full py-2.5 rounded-full bg-gold-500 text-obsidian-950 font-bold text-xs uppercase tracking-widest">
+          Request Executive Dossier
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- HERO SECTION WITH GOLDEN SOUND VIBRATION MANDALA -->
+  <!-- ========================================================================= -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-20 px-4 sm:px-6 overflow-hidden">
+    
+    <!-- Background Ambient Lighting & Noise Texture -->
+    <div class="absolute inset-0 bg-radial-gradient from-obsidian-900 via-obsidian-950 to-[#040405] pointer-events-none"></div>
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+
+    <!-- Subdued Golden Atmospheric Auroras -->
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-gold-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold-700/10 rounded-full blur-[160px] pointer-events-none"></div>
+
+    <!-- ======================================================================= -->
+    <!-- THE LUXURY GOLDEN SOUND VIBRATION MANDALA -->
+    <!-- Positioned directly behind the Spirits Global logo and core typography -->
+    <!-- Cymatics wave resonance, sacred harmonic geometry, and golden line work -->
+    <!-- ======================================================================= -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] sm:w-[750px] md:w-[900px] lg:w-[1050px] aspect-square pointer-events-none select-none z-0 flex items-center justify-center">
+      
+      <!-- Ambient Glow under the mandala -->
+      <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-gold-500/5 via-gold-400/10 to-transparent blur-3xl wave-pulse"></div>
+
+      <!-- Outer Rotating Mandala Layer (Concentric Soundwaves & Harmonic Petals) -->
+      <svg id="heroMandala" class="w-full h-full animate-spin-slow opacity-65 transition-transform duration-1000 ease-out" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldLinear" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFF5D1" stop-opacity="0.85"/>
+            <stop offset="40%" stop-color="#D4AF37" stop-opacity="0.7"/>
+            <stop offset="70%" stop-color="#C5A059" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#805C1D" stop-opacity="0.8"/>
+          </linearGradient>
+
+          <linearGradient id="goldSubtle" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#F3E5AB" stop-opacity="0.15"/>
+          </linearGradient>
+
+          <!-- Drop filter for cymatics shimmer -->
+          <filter id="goldShimmer" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Outer Boundary Resonant Wave Rings -->
+        <circle cx="500" cy="500" r="485" stroke="url(#goldSubtle)" stroke-width="1" stroke-dasharray="2 12" />
+        <circle cx="500" cy="500" r="460" stroke="url(#goldLinear)" stroke-width="1.2" stroke-opacity="0.6" />
+        <circle cx="500" cy="500" r="440" stroke="url(#goldLinear)" stroke-width="0.75" stroke-dasharray="6 8" stroke-opacity="0.5" />
+        
+        <!-- Cymatic Sine Frequency Waves (Simulating 432Hz Sound Dispersion) -->
+        <g stroke="url(#goldLinear)" stroke-width="1.2" stroke-opacity="0.45" filter="url(#goldShimmer)">
+          <!-- 16 Sacred Symmetry Chladni Sound Loops -->
+          <path d="M500 50 C580 160 660 160 740 260 C820 360 820 440 950 500 C820 560 820 640 740 740 C660 840 580 840 500 950 C420 840 340 840 260 740 C180 640 180 560 50 500 C180 440 180 360 260 260 C340 160 420 160 500 50 Z" fill="none"/>
+          <path d="M500 80 C560 180 640 180 710 290 C780 400 780 460 920 500 C780 540 780 600 710 710 C640 820 560 820 500 920 C440 820 360 820 290 710 C220 600 220 540 80 500 C220 460 220 400 290 290 C360 180 440 180 500 80 Z" fill="none" stroke-dasharray="4 6"/>
+        </g>
+
+        <!-- Concentric Cymatics Nodal Harmonic Rosette -->
+        <g stroke="url(#goldLinear)" stroke-width="1.5" stroke-opacity="0.55">
+          <!-- Harmonic Overlapping Rings (Solfeggio Geometry) -->
+          <circle cx="500" cy="300" r="200" stroke-opacity="0.3"/>
+          <circle cx="500" cy="700" r="200" stroke-opacity="0.3"/>
+          <circle cx="300" cy="500" r="200" stroke-opacity="0.3"/>
+          <circle cx="700" cy="500" r="200" stroke-opacity="0.3"/>
+          <circle cx="358" cy="358" r="200" stroke-opacity="0.25"/>
+          <circle cx="642" cy="358" r="200" stroke-opacity="0.25"/>
+          <circle cx="358" cy="642" r="200" stroke-opacity="0.25"/>
+          <circle cx="642" cy="642" r="200" stroke-opacity="0.25"/>
+        </g>
+
+        <!-- Precision Acoustic Frequency Calibration Ring (Ticks & Angles) -->
+        <g stroke="url(#goldLinear)" stroke-width="1.2" stroke-opacity="0.6">
+          <circle cx="500" cy="500" r="320" stroke-dasharray="1 14" stroke-width="2"/>
+          <circle cx="500" cy="500" r="290" stroke="url(#goldSubtle)" stroke-width="1"/>
+          <!-- Star of Resonance Rays -->
+          <line x1="500" y1="210" x2="500" y2="790" stroke-dasharray="4 8"/>
+          <line x1="210" y1="500" x2="790" y2="500" stroke-dasharray="4 8"/>
+          <line x1="295" y1="295" x2="705" y2="705" stroke-dasharray="4 8"/>
+          <line x1="705" y1="295" x2="295" y2="705" stroke-dasharray="4 8"/>
+        </g>
+
+        <!-- Inner Core Sound Ring -->
+        <circle cx="500" cy="500" r="230" stroke="url(#goldLinear)" stroke-width="1.8" stroke-dasharray="5 5" stroke-opacity="0.75"/>
+        <circle cx="500" cy="500" r="170" stroke="url(#goldLinear)" stroke-width="1.2" stroke-opacity="0.65"/>
+      </svg>
+
+      <!-- Inner Counter-Rotating Delicate Mandala Core -->
+      <svg class="absolute w-[65%] h-[65%] animate-spin-reverse-slow opacity-50" viewBox="0 0 500 500" fill="none">
+        <circle cx="250" cy="250" r="130" stroke="#D4AF37" stroke-width="0.8" stroke-dasharray="3 7"/>
+        <polygon points="250,130 335,215 335,335 250,370 165,335 165,215" stroke="#F6E6B8" stroke-width="1" stroke-opacity="0.45"/>
+        <polygon points="250,370 335,285 335,165 250,130 165,165 165,285" stroke="#C5A059" stroke-width="1" stroke-opacity="0.35"/>
+      </svg>
+
+      <!-- Radial Vignette Scrim behind text: Ensures pristine typography legibility while mandala glows behind -->
+      <div class="absolute w-[440px] sm:w-[560px] md:w-[680px] h-[340px] sm:h-[400px] rounded-full bg-obsidian-950/85 backdrop-blur-[2px] blur-xl pointer-events-none"></div>
+    </div>
+
+    <!-- Hero Content Container (Above Mandala) -->
+    <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+      
+      <!-- Prestige Tag / Accreditations -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-gold-500/30 bg-obsidian-900/90 backdrop-blur-md mb-8 animate-float">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+        <span class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-champagne/90 font-medium">Bespoke Executive Frequency Architecture</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+      </div>
+
+      <!-- Luxury Brand Insignia Crest -->
+      <div class="mb-5 relative">
+        <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border border-gold-500/40 bg-gradient-to-b from-obsidian-850 to-obsidian-950 p-3.5 flex items-center justify-center shadow-[0_0_40px_rgba(212,175,55,0.2)]">
+          <svg class="w-full h-full text-gold-400" viewBox="0 0 80 80" fill="none">
+            <!-- Tibetan Singing Bowl + Sound Vibration Motif -->
+            <path d="M15 38 C15 62 65 62 65 38 L65 32 L15 32 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="40" cy="32" rx="25" ry="6" stroke="currentColor" stroke-width="2"/>
+            <!-- Concentric Resonance Emanation -->
+            <path d="M40 18 C30 18 20 22 18 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 3"/>
+            <path d="M40 12 C25 12 12 18 8 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 4"/>
+            <circle cx="40" cy="46" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="absolute -inset-1 rounded-2xl bg-gold-500/20 blur-md -z-10"></div>
+      </div>
+
+      <!-- Primary Brand Typography (Crisp, Commanding, Sovereign) -->
+      <h1 class="font-cinzel text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[0.2em] md:tracking-[0.25em] text-champagne mb-4 drop-shadow-2xl">
+        <span class="gold-gradient-text block">SPIRITS GLOBAL</span>
+      </h1>
+
+      <p class="font-serif italic text-lg sm:text-xl md:text-2xl text-gold-300/95 tracking-wide max-w-2xl mb-6">
+        Where Ancient Indian Wisdom Meets Modern Neuro-Acoustics
+      </p>
+
+      <p class="text-sm sm:text-base text-neutral-300/90 max-w-2xl font-light leading-relaxed mb-10 tracking-wide">
+        A lineage-grounded wellness enterprise delivering somatic sound healing, classical yogic science, and guided contemplative stillness for discernment-driven institutions, enterprise leadership, and private seekers worldwide.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
+        <!-- Singing Bowl Live Demo Trigger -->
+        <button onclick="playSingingBowl(432, 'Master 432Hz Sound Immersion'); pulseMandala();" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-obsidian-950 font-semibold text-xs tracking-[0.2em] uppercase hover:brightness-110 active:scale-95 transition-all shadow-[0_4px_25px_rgba(212,175,55,0.35)] flex items-center justify-center gap-3">
+          <svg class="w-4 h-4 text-obsidian-950" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+          </svg>
+          Experience 432Hz Resonance
+        </button>
+
+        <a href="#disciplines" class="w-full sm:w-auto px-8 py-4 rounded-full border border-gold-500/40 text-champagne hover:text-gold-400 hover:border-gold-400 text-xs tracking-[0.2em] uppercase transition-all bg-obsidian-900/60 backdrop-blur-md flex items-center justify-center">
+          Explore Three Disciplines
+        </a>
+      </div>
+
+      <!-- Trust Metrics Strip -->
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 pt-10 border-t border-gold-500/15 w-full">
+        <div>
+          <p class="font-cinzel text-xl md:text-2xl text-gold-400 font-semibold">-73%</p>
+          <p class="text-[11px] uppercase tracking-wider text-neutral-400 mt-1">Salivary Cortisol in 45m</p>
+        </div>
+        <div>
+          <p class="font-cinzel text-xl md:text-2xl text-gold-400 font-semibold">&lt; 14 min</p>
+          <p class="text-[11px] uppercase tracking-wider text-neutral-400 mt-1">Theta Brainwave State</p>
+        </div>
+        <div>
+          <p class="font-cinzel text-xl md:text-2xl text-gold-400 font-semibold">7-Alloy</p>
+          <p class="text-[11px] uppercase tracking-wider text-neutral-400 mt-1">Hand-Cast Himalayan Bowls</p>
+        </div>
+        <div>
+          <p class="font-cinzel text-xl md:text-2xl text-gold-400 font-semibold">94.8%</p>
+          <p class="text-[11px] uppercase tracking-wider text-neutral-400 mt-1">Executive Cognitive Clarity</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#ethos" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gold-500/60 hover:text-gold-400 transition-colors">
+      <span class="text-[9px] uppercase tracking-[0.3em]">Explore Atelier</span>
+      <div class="w-4 h-7 rounded-full border border-gold-500/40 flex items-start justify-center p-1">
+        <div class="w-1 h-2 rounded-full bg-gold-400 animate-bounce"></div>
+      </div>
+    </a>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- BRAND ETHOS / THE CELLULAR FREQUENCY DOCTRINE -->
+  <!-- ========================================================================= -->
+  <section id="ethos" class="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      
+      <!-- Visual Collage / Spatial Sound Environment (Photo 1) -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative rounded-3xl overflow-hidden gold-shimmer-border aspect-[4/5] bg-obsidian-900 group cursor-pointer" onclick="openLightboxByPhotoId(1)">
+          <img 
+            data-photo-id="1"
+            data-filename="810281314_18379086517234710_7305867249668683434_n.jpg"
+            src="./810281314_18379086517234710_7305867249668683434_n.jpg" 
+            alt="Practitioner in white seated cross-legged before an intricate mandala wall mural striking a brass singing bowl" 
+            class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            onerror="handleSmartImageFallback(this)"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/30 to-transparent"></div>
+
+          <!-- Quick Swap Single Photo Button -->
+          <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(1);" class="absolute top-4 right-4 z-20 px-3 py-1.5 rounded-full bg-obsidian-950/85 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 text-[10px] uppercase tracking-widest flex items-center gap-1.5 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all backdrop-blur-md" title="Swap or upload Photo #1">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span>Swap Photo #1</span>
+          </button>
+          
+          <!-- Floating Editorial Plaque -->
+          <div class="absolute bottom-6 left-6 right-6 p-6 rounded-2xl glass-luxury border border-gold-500/30">
+            <p class="text-[10px] uppercase tracking-[0.25em] text-gold-400 mb-1">Sovereign Acoustic Atelier • Photo #01</p>
+            <p class="font-serif text-lg text-champagne italic">"The human body is an orchestral instrument. Chronic decision fatigue is simply acoustic dissonance."</p>
+          </div>
+        </div>
+        
+        <!-- Decorative Frame Offset -->
+        <div class="absolute -bottom-4 -right-4 w-full h-full border border-gold-500/20 rounded-3xl -z-10 hidden sm:block"></div>
+      </div>
+
+      <!-- Text Narrative -->
+      <div class="lg:col-span-7 space-y-8">
+        <div>
+          <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-3">Foundational Philosophy</span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-champagne font-normal leading-tight">
+            Transcending Conventional Relaxation. <br>
+            <span class="italic text-gold-300">Engineering Sovereign Mental Equilibrium.</span>
+          </h2>
+        </div>
+
+        <p class="text-neutral-400 leading-relaxed text-sm sm:text-base font-light">
+          Modern enterprise leaders operate under perpetual sympathetic nervous arousal. The conventional corporate wellness model of sporadic spa treatments or passive meditation apps fails because cognitive friction registers on a bio-cellular and neurochemical frequency level.
+        </p>
+
+        <p class="text-neutral-400 leading-relaxed text-sm sm:text-base font-light">
+          <strong class="text-gold-300 font-medium">Spirits Global</strong> merges ancient Eastern Himalayan acoustic metallurgy with contemporary neuroscience. Through targeted acoustic frequency entrainment, physical somatic alignment, and pulmonary rhythm pacing, we systematically down-shift high-stakes decision makers from hyper-vigilant Beta states into regenerative Alpha and Theta wave coherence.
+        </p>
+
+        <!-- Feature Pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+          <div class="p-5 rounded-2xl bg-obsidian-900/60 border border-gold-500/15">
+            <div class="w-8 h-8 rounded-lg bg-gold-500/10 flex items-center justify-center text-gold-400 mb-3 font-cinzel text-sm font-bold">01</div>
+            <h4 class="text-champagne font-cinzel text-sm tracking-wider uppercase mb-1">Vibroacoustic Physics</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Direct soundwave induction targeting cellular water geometry and myofascial tension release.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-obsidian-900/60 border border-gold-500/15">
+            <div class="w-8 h-8 rounded-lg bg-gold-500/10 flex items-center justify-center text-gold-400 mb-3 font-cinzel text-sm font-bold">02</div>
+            <h4 class="text-champagne font-cinzel text-sm tracking-wider uppercase mb-1">Vagal Neuro-Pacing</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Restoring heart rate variability (HRV) and mitigating cortisol spikes under acute enterprise stress.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- THE THREE DISCIPLINES: ENGAGING VISUAL SHOWCASES & DETAILS -->
+  <!-- Discipline 01: Sound Therapy & Resonance (Photos 1, 2, 3) -->
+  <!-- Discipline 02: Somatic Movement & Alignment (Photos 4, 5, 6) -->
+  <!-- Discipline 03: Conscious Breathwork & Mindfulness (Photos 7, 8, 9, 10) -->
+  <!-- ========================================================================= -->
+  <section id="disciplines" class="py-28 bg-obsidian-900/40 relative border-t border-b border-gold-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-3">Core Modalities</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-champagne font-normal mb-6">
+          The Three Pillars of Executive Coherence
+        </h2>
+        <p class="text-neutral-400 text-sm sm:text-base font-light leading-relaxed">
+          Each discipline is an acoustic, biomechanical, and neuro-respiratory science tailored specifically to reset hyper-performing intellects without disruption.
+        </p>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- DISCIPLINE 01: ACOUSTIC SOUND THERAPY & RESONANT FREQUENCY ENTRAINMENT -->
+      <!-- Uses Photos #1, #2, and #3 -->
+      <!-- =================================================================== -->
+      <div class="mb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Content Left -->
+          <div class="lg:col-span-5 space-y-6 order-2 lg:order-1">
+            <div class="inline-flex items-center gap-3">
+              <span class="font-cinzel text-sm text-gold-500 border-b border-gold-500/60 pb-0.5">DISCIPLINE 01</span>
+              <span class="text-[11px] uppercase tracking-widest text-neutral-400">432Hz & Solfeggio Science</span>
+            </div>
+            
+            <h3 class="font-serif text-2xl sm:text-4xl text-champagne leading-snug">
+              Acoustic Sound Therapy & Resonant Frequency Entrainment
+            </h3>
+
+            <p class="text-neutral-400 text-sm leading-relaxed font-light">
+              Utilizing authentic hand-hammered 7-metal Tibetan bell alloys (copper, tin, silver, iron, lead, gold, zinc), our acoustic master practitioners orchestrate multi-harmonic resonance fields. These physical acoustic waves travel through bone conduction and fluid tissue, disarming deep neuromuscular bracing and promoting immediate alpha/theta synchrony.
+            </p>
+
+            <!-- Clinical Metrics Box -->
+            <div class="p-5 rounded-2xl bg-obsidian-850 border border-gold-500/20 space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-neutral-300">Theta Wave Access Time</span>
+                <span class="text-gold-400 font-mono font-medium">&lt; 14 Minutes</span>
+              </div>
+              <div class="w-full bg-obsidian-700 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-gold-600 to-gold-400 h-full w-[88%]"></div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-neutral-300">Sympathetic System De-escalation</span>
+                <span class="text-gold-400 font-mono font-medium">92% Coherence</span>
+              </div>
+              <div class="w-full bg-obsidian-700 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-gold-600 to-gold-400 h-full w-[94%]"></div>
+              </div>
+            </div>
+
+            <!-- Discipline Audio Synthesizer Trigger -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <button onclick="playSingingBowl(528, '528Hz Solfeggio Repair Frequency')" class="px-5 py-3 rounded-xl bg-obsidian-850 hover:bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs tracking-wider uppercase flex items-center gap-2.5 transition-all">
+                <svg class="w-4 h-4 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                </svg>
+                <span>Synthesize 528Hz Overtone</span>
+              </button>
+              <button onclick="openLightboxByPhotoId(2)" class="text-xs text-neutral-400 hover:text-gold-400 underline underline-offset-4 tracking-widest uppercase transition-colors">
+                View 8-Bowl Specimen Array
+              </button>
+            </div>
+          </div>
+
+          <!-- Visual Showcase Right: Multi-Photo Engaging Layout (Photos 1, 2, 3) -->
+          <div class="lg:col-span-7 order-1 lg:order-2">
+            <div class="grid grid-cols-12 gap-4 items-stretch">
+              <!-- Primary Feature Photo: Photo #1 (Mandala Wall Singing Bowl Strike) -->
+              <div class="col-span-12 sm:col-span-7 relative rounded-3xl overflow-hidden gold-shimmer-border aspect-[3/4] group cursor-pointer bg-obsidian-900" onclick="openLightboxByPhotoId(1)">
+                <img 
+                  data-photo-id="1"
+                  data-filename="810281314_18379086517234710_7305867249668683434_n.jpg"
+                  src="./810281314_18379086517234710_7305867249668683434_n.jpg" 
+                  alt="Practitioner in white attire striking brass singing bowl before mandala mural" 
+                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  onerror="handleSmartImageFallback(this)"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+                <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(1);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #1">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                </button>
+                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] uppercase tracking-widest text-gold-400 block">Primary Modality • Photo #01</span>
+                    <span class="text-sm text-champagne font-serif tracking-wider">432Hz Mandala Acoustic Strike</span>
+                  </div>
+                  <span class="p-2 rounded-full bg-obsidian-900/80 border border-gold-500/30 text-gold-400">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Secondary Column of Photos: Photo #2 & Photo #3 -->
+              <div class="col-span-12 sm:col-span-5 flex flex-col gap-4 justify-between">
+                <!-- Photo #2: 8-Bowl Array -->
+                <div class="rounded-2xl overflow-hidden gold-shimmer-border aspect-square group cursor-pointer relative bg-obsidian-900" onclick="openLightboxByPhotoId(2)">
+                  <img 
+                    data-photo-id="2"
+                    data-filename="798687161_18377608009234710_5753519174774650415_n.jpg"
+                    src="./798687161_18377608009234710_5753519174774650415_n.jpg" 
+                    alt="8-Bowl Harmonic Brass Singing Bowl Array and Reiki Toolkit" 
+                    class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    onerror="handleSmartImageFallback(this)"
+                  >
+                  <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-transparent"></div>
+                  <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(2);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #2">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                  </button>
+                  <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                    <span class="text-[11px] font-serif text-champagne">8-Vessel Harmonic Array</span>
+                    <span class="text-[9px] uppercase tracking-widest text-gold-400">7-Alloy • #02</span>
+                  </div>
+                </div>
+
+                <!-- Photo #3: 1-on-1 Bio-Field & Crystal Pendulum Session -->
+                <div class="rounded-2xl overflow-hidden gold-shimmer-border aspect-[4/5] sm:aspect-square group cursor-pointer relative bg-obsidian-900" onclick="openLightboxByPhotoId(3)">
+                  <img 
+                    data-photo-id="3"
+                    data-filename="810449071_18379086535234710_7887660854801402781_n.jpg"
+                    src="./810449071_18379086535234710_7887660854801402781_n.jpg" 
+                    alt="1-on-1 restorative bio-field pendulum and sound bath session" 
+                    class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    onerror="handleSmartImageFallback(this)"
+                  >
+                  <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-transparent"></div>
+                  <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(3);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #3">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                  </button>
+                  <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                    <span class="text-[11px] font-serif text-champagne">1-on-1 Bio-Field Calibration</span>
+                    <span class="text-[9px] uppercase tracking-widest text-gold-400">Theta • #03</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- DISCIPLINE 02: SOMATIC MOVEMENT & RESTORATIVE POSTURAL ALIGNMENT -->
+      <!-- Uses Photos #4, #5, and #6 -->
+      <!-- =================================================================== -->
+      <div class="mb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Visual Showcase Left: Engaging Minimalist Sanctuary Photos (Photos 4, 5, 6) -->
+          <div class="lg:col-span-7">
+            <div class="grid grid-cols-12 gap-4 items-stretch">
+              <!-- Secondary Column of Photos (Photo #5 Assisted Inversion + Photo #6 Outdoor Reed Movement) -->
+              <div class="col-span-12 sm:col-span-5 flex flex-col gap-4 justify-between order-2 sm:order-1">
+                <!-- Photo #5: Assisted Somatic Inversion in Bamboo Studio -->
+                <div class="rounded-2xl overflow-hidden gold-shimmer-border aspect-square group cursor-pointer relative bg-obsidian-900" onclick="openLightboxByPhotoId(5)">
+                  <img 
+                    data-photo-id="5"
+                    data-filename="798035321_18377607940234710_5785732942711485714_n.jpg"
+                    src="./798035321_18377607940234710_5785732942711485714_n.jpg" 
+                    alt="Hands-on assisted somatic inversion in bamboo pavilion" 
+                    class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    onerror="handleSmartImageFallback(this)"
+                  >
+                  <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-transparent"></div>
+                  <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(5);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #5">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                  </button>
+                  <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                    <span class="text-[11px] font-serif text-champagne">Assisted Thoracic Inversion</span>
+                    <span class="text-[9px] uppercase tracking-widest text-gold-400">Kinetics • #05</span>
+                  </div>
+                </div>
+
+                <!-- Photo #6: Joyful Dual-Practitioner Somatic Flow in Wild Reeds -->
+                <div class="rounded-2xl overflow-hidden gold-shimmer-border aspect-[16/10] sm:aspect-square group cursor-pointer relative bg-obsidian-900" onclick="openLightboxByPhotoId(6)">
+                  <img 
+                    data-photo-id="6"
+                    data-filename="IMG_1713.jpg"
+                    src="./IMG_1713.jpg" 
+                    alt="Synchronized dual-practitioner somatic movement in nature" 
+                    class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    onerror="handleSmartImageFallback(this)"
+                  >
+                  <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-transparent"></div>
+                  <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(6);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #6">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                  </button>
+                  <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                    <span class="text-[11px] font-serif text-champagne">Dual Kinetic Synchrony</span>
+                    <span class="text-[9px] uppercase tracking-widest text-gold-400">Vitality • #06</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Primary Large Photo: Photo #4 (Architectural Brick Archway Warrior Alignment) -->
+              <div class="col-span-12 sm:col-span-7 rounded-3xl overflow-hidden gold-shimmer-border aspect-[3/4] group cursor-pointer relative bg-obsidian-900 order-1 sm:order-2" onclick="openLightboxByPhotoId(4)">
+                <img 
+                  data-photo-id="4"
+                  data-filename="IMG_1698.jpg"
+                  src="./IMG_1698.jpg" 
+                  alt="Architectural Warrior I alignment inside stepped red-brick archway" 
+                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  onerror="handleSmartImageFallback(this)"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+                <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(4);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #4">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                </button>
+                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] uppercase tracking-widest text-gold-400 block">Structural Poise • Photo #04</span>
+                    <span class="text-sm text-champagne font-serif tracking-wider">Heritage Archway Spinal Sovereignty</span>
+                  </div>
+                  <span class="p-2 rounded-full bg-obsidian-900/80 border border-gold-500/30 text-gold-400">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Right -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center gap-3">
+              <span class="font-cinzel text-sm text-gold-500 border-b border-gold-500/60 pb-0.5">DISCIPLINE 02</span>
+              <span class="text-[11px] uppercase tracking-widest text-neutral-400">Somatic Ergonomics</span>
+            </div>
+            
+            <h3 class="font-serif text-2xl sm:text-4xl text-champagne leading-snug">
+              Somatic Movement & Restorative Postural Alignment
+            </h3>
+
+            <p class="text-neutral-400 text-sm leading-relaxed font-light">
+              Fourteen-hour executive workdays lock the cervical spine, compress lumbar vertebrae, and clamp the diaphragm into chronic tension. Our somatic movement specialists apply micro-mobility therapies and gentle myofascial unwinding to restore structural fluid dynamics.
+            </p>
+
+            <ul class="space-y-3 text-xs sm:text-sm text-neutral-300">
+              <li class="flex items-start gap-3">
+                <span class="text-gold-400 text-base leading-none">✦</span>
+                <span><strong>Thoracic Cage Expansion:</strong> Unlocks lung capacity constricted by laptop and boardroom postures.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold-400 text-base leading-none">✦</span>
+                <span><strong>Psoas & Vagus De-stressing:</strong> Releases deep instinctual adrenaline stored in the hip flexor complex.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-gold-400 text-base leading-none">✦</span>
+                <span><strong>Subtle Kinetic Grounding:</strong> Low-strain somatic floorwork suited for immediate corporate integration.</span>
+              </li>
+            </ul>
+
+            <div class="pt-2">
+              <button onclick="openConsultationModal('Discipline 02: Somatic Movement')" class="px-6 py-3 rounded-full border border-gold-500/30 text-champagne hover:border-gold-400 hover:text-gold-400 text-xs tracking-widest uppercase transition-all">
+                Inquire For Corporate Pods
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- DISCIPLINE 03: CONSCIOUS BREATHWORK & MINDFULNESS -->
+      <!-- Uses Photos #7, #8, #9, and #10 -->
+      <!-- =================================================================== -->
+      <div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Content Left -->
+          <div class="lg:col-span-5 space-y-6 order-2 lg:order-1">
+            <div class="inline-flex items-center gap-3">
+              <span class="font-cinzel text-sm text-gold-500 border-b border-gold-500/60 pb-0.5">DISCIPLINE 03</span>
+              <span class="text-[11px] uppercase tracking-widest text-neutral-400">Pulmonary Modulation</span>
+            </div>
+            
+            <h3 class="font-serif text-2xl sm:text-4xl text-champagne leading-snug">
+              Conscious Breathwork & Guided Mindfulness Meditation
+            </h3>
+
+            <p class="text-neutral-400 text-sm leading-relaxed font-light">
+              Breathing is the only autonomic bodily function under conscious voluntary control. By training executives in specialized carbon dioxide tolerance rhythms and box-pacing protocols, we empower leaders to instantly override acute panic responses, clear mental static, and preserve cognitive poise during billion-dollar negotiations.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-obsidian-850 border border-gold-500/15">
+                <p class="text-gold-400 font-cinzel text-lg font-bold">4 - 7 - 8</p>
+                <p class="text-[11px] uppercase tracking-wider text-neutral-400 mt-0.5">Parasympathetic Trigger</p>
+              </div>
+              <div class="p-4 rounded-xl bg-obsidian-850 border border-gold-500/15">
+                <p class="text-gold-400 font-cinzel text-lg font-bold">+38%</p>
+                <p class="text-[11px] uppercase tracking-wider text-neutral-400 mt-0.5">Prefrontal Oxygenation</p>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button onclick="playSingingBowl(396, '396Hz Grounding Root Tone')" class="px-5 py-3 rounded-xl bg-obsidian-850 hover:bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs tracking-wider uppercase flex items-center gap-2.5 transition-all">
+                <svg class="w-4 h-4 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                </svg>
+                <span>Synthesize 396Hz Root Frequency</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Visual Showcase Right: Engaging Meditative Photography (Photos 7, 8, 9, 10) -->
+          <div class="lg:col-span-7 order-1 lg:order-2">
+            <div class="grid grid-cols-12 gap-4">
+              <!-- Primary Featured Photo: Photo #7 (Lakeside Lotus Meditation) -->
+              <div class="col-span-12 sm:col-span-8 rounded-3xl overflow-hidden gold-shimmer-border aspect-[16/10] sm:aspect-[4/3] group cursor-pointer relative bg-obsidian-900" onclick="openLightboxByPhotoId(7)">
+                <img 
+                  data-photo-id="7"
+                  data-filename="IMG_1734.jpg"
+                  src="./IMG_1734.jpg" 
+                  alt="Lakeside lotus meditation overlooking tranquil water and hills" 
+                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  onerror="handleSmartImageFallback(this)"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+                <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(7);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #7">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                </button>
+                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] uppercase tracking-widest text-gold-400 block">Vagal Conditioning • Photo #07</span>
+                    <span class="text-sm text-champagne font-serif tracking-wider">Lakeside Prana Mudra Sanctuary</span>
+                  </div>
+                  <span class="p-2 rounded-full bg-obsidian-900/80 border border-gold-500/30 text-gold-400">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Secondary Image 1: Photo #8 (Contemplative Tree Pose / Vrksasana) -->
+              <div class="col-span-12 sm:col-span-4 rounded-2xl overflow-hidden gold-shimmer-border aspect-[3/4] group cursor-pointer relative bg-obsidian-900" onclick="openLightboxByPhotoId(8)">
+                <img 
+                  data-photo-id="8"
+                  data-filename="IMG_1720.jpg"
+                  src="./IMG_1720.jpg" 
+                  alt="Contemplative Tree Pose with Anjali Mudra in nature" 
+                  class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  onerror="handleSmartImageFallback(this)"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-transparent"></div>
+                <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(8);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #8">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                </button>
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                  <span class="text-[11px] font-serif text-champagne">Vrksasana Stillness</span>
+                  <span class="text-[9px] uppercase tracking-widest text-gold-400">#08</span>
+                </div>
+              </div>
+
+              <!-- Secondary Image 2: Photo #9 (Sacred Dhyana Mudra Hand Posture & Mala) -->
+              <div class="col-span-12 sm:col-span-5 rounded-2xl overflow-hidden gold-shimmer-border aspect-square sm:aspect-[4/3] group cursor-pointer relative bg-obsidian-900" onclick="openLightboxByPhotoId(9)">
+                <img 
+                  data-photo-id="9"
+                  data-filename="798488639_18377607577234710_3166204975480000726_n.jpg"
+                  src="./798488639_18377607577234710_3166204975480000726_n.jpg" 
+                  alt="Sacred Dhyana mudra hands with mala beads and mindfulness manuscript" 
+                  class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  onerror="handleSmartImageFallback(this)"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-transparent"></div>
+                <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(9);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #9">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                </button>
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                  <span class="text-[11px] font-serif text-champagne">Dhyana Mudra & Mala</span>
+                  <span class="text-[9px] uppercase tracking-widest text-gold-400">Protocol • #09</span>
+                </div>
+              </div>
+
+              <!-- Secondary Image 3: Photo #10 (Grounded Lakeside Joyful Integration) -->
+              <div class="col-span-12 sm:col-span-7 rounded-2xl overflow-hidden gold-shimmer-border aspect-[16/10] sm:aspect-[16/9] group cursor-pointer relative bg-obsidian-900" onclick="openLightboxByPhotoId(10)">
+                <img 
+                  data-photo-id="10"
+                  data-filename="IMG_1735.jpg"
+                  src="./IMG_1735.jpg" 
+                  alt="Grounded lakeside mindfulness stillness and breathwork integration" 
+                  class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  onerror="handleSmartImageFallback(this)"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-transparent"></div>
+                <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(10);" class="absolute top-3 right-3 z-20 p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all" title="Swap Photo #10">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                </button>
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                  <span class="text-[11px] font-serif text-champagne">Lakeside Breathwork Integration</span>
+                  <span class="text-[9px] uppercase tracking-widest text-gold-400">+38% O₂ • #10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SCIENTIFIC RIGOR & FREQUENCY SPECTRUM -->
+  <!-- ========================================================================= -->
+  <section id="clinical" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="p-8 sm:p-12 md:p-16 rounded-3xl bg-gradient-to-b from-obsidian-900 to-obsidian-950 border border-gold-500/20 relative overflow-hidden">
+      
+      <!-- Subtle watermark logo -->
+      <div class="absolute -right-20 -bottom-20 w-96 h-96 opacity-5 pointer-events-none text-gold-500">
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          <circle cx="50" cy="50" r="45"/>
+        </svg>
+      </div>
+
+      <div class="max-w-3xl space-y-4 mb-12">
+        <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block">Empirical Methodology</span>
+        <h3 class="font-serif text-3xl sm:text-4xl text-champagne font-normal">
+          The EEG Brainwave State Architecture
+        </h3>
+        <p class="text-neutral-400 text-sm font-light leading-relaxed">
+          How Spirits Global shifts the neurological operating frequency from agitated Beta overdrive into profound Theta restoration within 45 minutes of acoustic entrainment.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        
+        <!-- Beta State -->
+        <div class="p-6 rounded-2xl bg-obsidian-850/80 border border-neutral-800">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-neutral-400">14 - 30 Hz</span>
+            <span class="text-[10px] uppercase px-2 py-0.5 rounded bg-red-900/30 text-red-300 border border-red-500/20">Hyper-Arousal</span>
+          </div>
+          <h4 class="font-cinzel text-base text-neutral-200 mb-2">High Beta</h4>
+          <p class="text-xs text-neutral-400 leading-relaxed">Executive stress, crisis triage, cognitive narrowing, elevated adrenaline.</p>
+        </div>
+
+        <!-- Alpha State -->
+        <div class="p-6 rounded-2xl bg-obsidian-850/80 border border-gold-500/30 shadow-[0_0_15px_rgba(212,175,55,0.08)]">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-gold-400">8 - 13 Hz</span>
+            <span class="text-[10px] uppercase px-2 py-0.5 rounded bg-gold-500/10 text-gold-400 border border-gold-500/30">Target Coherence</span>
+          </div>
+          <h4 class="font-cinzel text-base text-champagne mb-2">Alpha State</h4>
+          <p class="text-xs text-neutral-300 leading-relaxed">Flow state access, lateral creative problem solving, calm situational mastery.</p>
+        </div>
+
+        <!-- Theta State -->
+        <div class="p-6 rounded-2xl bg-obsidian-850/80 border border-gold-500/40 shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-gold-300">4 - 7 Hz</span>
+            <span class="text-[10px] uppercase px-2 py-0.5 rounded bg-gold-500/20 text-gold-300 border border-gold-500/50">Acoustic Reset</span>
+          </div>
+          <h4 class="font-cinzel text-base text-champagne mb-2">Theta State</h4>
+          <p class="text-xs text-neutral-300 leading-relaxed">Subconscious restorative processing, autonomic nervous reboot, deep REM-level renewal.</p>
+        </div>
+
+        <!-- Delta State -->
+        <div class="p-6 rounded-2xl bg-obsidian-850/80 border border-neutral-800">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-neutral-400">0.5 - 3.5 Hz</span>
+            <span class="text-[10px] uppercase px-2 py-0.5 rounded bg-blue-900/30 text-blue-300 border border-blue-500/20">Cellular Repair</span>
+          </div>
+          <h4 class="font-cinzel text-base text-neutral-200 mb-2">Delta Sleep</h4>
+          <p class="text-xs text-neutral-400 leading-relaxed">Immune system calibration, human growth hormone secretion, neural cleansing.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- EXPERIENCE & PORTFOLIO GALLERY (ALL 10 PHOTOS, FILTERABLE & LIGHTBOX) -->
+  <!-- ========================================================================= -->
+  <section id="gallery" class="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+      <div>
+        <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-3">Visual Archive • 10 Curated Specimens</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-champagne font-normal">
+          The Spirits Global Experience
+        </h2>
+      </div>
+
+      <!-- Gallery Category Filter Buttons -->
+      <div class="flex flex-wrap items-center gap-2" id="galleryFilters">
+        <button onclick="filterGallery('all', this)" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest bg-gold-500 text-obsidian-950 font-semibold transition-all">All (10)</button>
+        <button onclick="filterGallery('sound', this)" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest bg-obsidian-900 border border-gold-500/20 text-neutral-400 hover:text-gold-300 transition-all">Sound Entrainment (3)</button>
+        <button onclick="filterGallery('somatic', this)" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest bg-obsidian-900 border border-gold-500/20 text-neutral-400 hover:text-gold-300 transition-all">Somatic Yoga (3)</button>
+        <button onclick="filterGallery('mindfulness', this)" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest bg-obsidian-900 border border-gold-500/20 text-neutral-400 hover:text-gold-300 transition-all">Mindfulness (4)</button>
+      </div>
+    </div>
+
+    <!-- Gallery Grid (All 10 User-Provided Photographs with Smart Dual-Source Loader) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+      
+      <!-- Card 1: Photo #1 (Sound Entrainment: Practitioner & Mandala Mural) -->
+      <div class="gallery-item sound group relative rounded-3xl overflow-hidden aspect-[4/5] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(1)">
+        <img 
+          data-photo-id="1"
+          data-filename="810281314_18379086517234710_7305867249668683434_n.jpg"
+          src="./810281314_18379086517234710_7305867249668683434_n.jpg" 
+          alt="Mandala Sanctuary 432Hz Entrainment" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85 group-hover:opacity-90 transition-opacity"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 01 • Photo #01</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(1);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #1">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl text-champagne mb-1">Mandala Sanctuary Sound Bath</h4>
+            <p class="text-xs text-neutral-300">Hand-forged Himalayan vessel harmonic overtone induction.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Photo #2 (Sound Entrainment: 8-Bowl Harmonic Array) -->
+      <div class="gallery-item sound group relative rounded-3xl overflow-hidden aspect-[4/5] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(2)">
+        <img 
+          data-photo-id="2"
+          data-filename="798687161_18377608009234710_5753519174774650415_n.jpg"
+          src="./798687161_18377608009234710_5753519174774650415_n.jpg" 
+          alt="Master 8-Bowl Harmonic Array" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 01 • Photo #02</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(2);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #2">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl text-champagne mb-1">8-Bowl Harmonic Array & Toolkit</h4>
+            <p class="text-xs text-neutral-300">Precision tuned bronze vessels and bio-resonance mapping.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Photo #3 (Sound Entrainment: 1-on-1 Bio-Field & Sound Session) -->
+      <div class="gallery-item sound group relative rounded-3xl overflow-hidden aspect-[4/5] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(3)">
+        <img 
+          data-photo-id="3"
+          data-filename="810449071_18379086535234710_7887660854801402781_n.jpg"
+          src="./810449071_18379086535234710_7887660854801402781_n.jpg" 
+          alt="Executive 1-on-1 Bio-Field Calibration" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 01 • Photo #03</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(3);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #3">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl text-champagne mb-1">1-on-1 Bio-Field & Sound Immersion</h4>
+            <p class="text-xs text-neutral-300">Deep theta-wave nervous system down-regulation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Photo #4 (Somatic Yoga: Architectural Archway Warrior) -->
+      <div class="gallery-item somatic group relative rounded-3xl overflow-hidden aspect-[4/5] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(4)">
+        <img 
+          data-photo-id="4"
+          data-filename="IMG_1698.jpg"
+          src="./IMG_1698.jpg" 
+          alt="Architectural Virabhadrasana Alignment" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 02 • Photo #04</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(4);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #4">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl text-champagne mb-1">Heritage Archway Virabhadrasana</h4>
+            <p class="text-xs text-neutral-300">Restoring postural sovereignty and structural poise.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Photo #5 (Somatic Yoga: Assisted Somatic Inversion in Bamboo Studio) -->
+      <div class="gallery-item somatic group relative rounded-3xl overflow-hidden aspect-[4/5] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(5)">
+        <img 
+          data-photo-id="5"
+          data-filename="798035321_18377607940234710_5785732942711485714_n.jpg"
+          src="./798035321_18377607940234710_5785732942711485714_n.jpg" 
+          alt="Bamboo Pavilion Assisted Inversion" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 02 • Photo #05</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(5);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #5">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl text-champagne mb-1">Bamboo Pavilion Somatic Inversion</h4>
+            <p class="text-xs text-neutral-300">Assisted myofascial and thoracic decompression.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Photo #6 (Somatic Yoga: Synchronized Dual Movement in Nature) -->
+      <div class="gallery-item somatic group relative rounded-3xl overflow-hidden aspect-[4/5] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(6)">
+        <img 
+          data-photo-id="6"
+          data-filename="IMG_1713.jpg"
+          src="./IMG_1713.jpg" 
+          alt="Synchronized Kinetic Expansion" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 02 • Photo #06</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(6);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #6">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl text-champagne mb-1">Dual Somatic Flow in Nature</h4>
+            <p class="text-xs text-neutral-300">Unlocking thoracic lung volume and joyful movement.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7: Photo #7 (Mindfulness: Lakeside Lotus Meditation) -->
+      <div class="gallery-item mindfulness group relative rounded-3xl overflow-hidden aspect-[4/5] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(7)">
+        <img 
+          data-photo-id="7"
+          data-filename="IMG_1734.jpg"
+          src="./IMG_1734.jpg" 
+          alt="Lakeside Lotus Stillness Sanctuary" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 03 • Photo #07</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(7);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #7">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl text-champagne mb-1">Lakeside Prana Mudra Stillness</h4>
+            <p class="text-xs text-neutral-300">Autonomic vagal pacing overlooking tranquil water.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8: Photo #8 (Mindfulness: Contemplative Tree Pose / Vrksasana) -->
+      <div class="gallery-item mindfulness group relative rounded-3xl overflow-hidden aspect-[4/5] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(8)">
+        <img 
+          data-photo-id="8"
+          data-filename="IMG_1720.jpg"
+          src="./IMG_1720.jpg" 
+          alt="Contemplative Vrksasana & Anjali Mudra" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 03 • Photo #08</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(8);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #8">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl text-champagne mb-1">Contemplative Vrksasana Balance</h4>
+            <p class="text-xs text-neutral-300">Single-pointed executive focus and Anjali mudra centering.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9: Photo #9 (Mindfulness: Sacred Dhyana Mudra & Mala Manuscript) -->
+      <div class="gallery-item mindfulness group relative rounded-3xl overflow-hidden aspect-[4/5] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(9)">
+        <img 
+          data-photo-id="9"
+          data-filename="798488639_18377607577234710_3166204975480000726_n.jpg"
+          src="./798488639_18377607577234710_3166204975480000726_n.jpg" 
+          alt="Sacred Dhyana Mudra & Protocol Manuscript" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent opacity-85"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 03 • Photo #09</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(9);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #9">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl text-champagne mb-1">Dhyana Mudra & Mindfulness Dossier</h4>
+            <p class="text-xs text-neutral-300">Tactile mala pacing and structured cognitive stillness.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10: Photo #10 (Mindfulness: Grounded Lakeside Joyful Integration) -->
+      <div class="gallery-item mindfulness group relative rounded-3xl overflow-hidden aspect-[4/5] lg:col-span-3 lg:aspect-[21/9] gold-shimmer-border cursor-pointer bg-obsidian-900" 
+           onclick="openLightboxByPhotoId(10)">
+        <img 
+          data-photo-id="10"
+          data-filename="IMG_1735.jpg"
+          src="./IMG_1735.jpg" 
+          alt="Lakeside Sanctuary Breathwork Integration" 
+          class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          onerror="handleSmartImageFallback(this)"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/30 to-transparent opacity-85"></div>
+        <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-between">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-obsidian-950/80 text-gold-300 border border-gold-500/40 backdrop-blur-md">Discipline 03 • Photo #10</span>
+            <button onclick="event.stopPropagation(); triggerSinglePhotoUpload(10);" class="p-2 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 transition-all" title="Swap Photo #10">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            </button>
+          </div>
+          <div class="max-w-xl">
+            <h4 class="font-serif text-2xl text-champagne mb-1">Lakeside Breathwork & Cognitive Renewal</h4>
+            <p class="text-xs sm:text-sm text-neutral-300">Sustained parasympathetic calm and joyful cognitive poise following full-spectrum pulmonary and acoustic entrainment.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- CORPORATE WELLNESS ENGAGEMENT TIERS / EXECUTIVE PACKAGES -->
+  <!-- ========================================================================= -->
+  <section id="programs" class="py-28 bg-obsidian-900/60 border-t border-gold-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-3">Enterprise Engagements</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-champagne font-normal mb-6">
+          Tailored Corporate Resonance Programs
+        </h2>
+        <p class="text-neutral-400 text-sm sm:text-base font-light">
+          Discreetly implemented within corporate headquarters or hosted at sovereign Alpine retreat sanctuaries worldwide.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Tier 1 -->
+        <div class="rounded-3xl p-8 bg-obsidian-900 border border-gold-500/20 flex flex-col justify-between hover:border-gold-500/50 transition-all">
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.25em] text-gold-400 font-semibold block mb-2">Quarterly Program</span>
+            <h3 class="font-serif text-2xl text-champagne mb-4">The Boardroom Reset</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed mb-6 font-light">
+              Single-day intensive sound bath and vagal modulation preceding major mergers, acquisitions, or board summits.
+            </p>
+            <ul class="space-y-3 text-xs text-neutral-300 mb-8">
+              <li class="flex items-center gap-2">✓ 432Hz Sound Chamber Installation</li>
+              <li class="flex items-center gap-2">✓ Salivary Cortisol & HRV Benchmarking</li>
+              <li class="flex items-center gap-2">✓ Somatic Cranial-Spinal Decompression</li>
+              <li class="flex items-center gap-2">✓ Max 12 Key Decision Makers</li>
+            </ul>
+          </div>
+          <button onclick="openConsultationModal('The Boardroom Reset')" class="w-full py-3 rounded-full border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 font-semibold text-xs uppercase tracking-widest transition-all">
+            Inquire Confidentiality
+          </button>
+        </div>
+
+        <!-- Tier 2 (Flagship) -->
+        <div class="rounded-3xl p-8 bg-gradient-to-b from-obsidian-850 to-obsidian-950 border-2 border-gold-500/60 flex flex-col justify-between relative shadow-[0_10px_40px_rgba(212,175,55,0.18)]">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gold-500 text-obsidian-950 text-[10px] uppercase tracking-widest font-bold">
+            Flagship Engagement
+          </div>
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.25em] text-gold-400 font-semibold block mb-2 mt-2">Annual Immersion</span>
+            <h3 class="font-serif text-2xl text-champagne mb-4">Alpine Leadership Retreat</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed mb-6 font-light">
+              Four-day immersive acoustic residence in private Swiss or Japanese sanctuaries. Complete nervous system recalibration.
+            </p>
+            <ul class="space-y-3 text-xs text-neutral-300 mb-8">
+              <li class="flex items-center gap-2">✦ Private Helicopter Transport & Concierge</li>
+              <li class="flex items-center gap-2">✦ Daily Multi-Harmonic Sound Baths</li>
+              <li class="flex items-center gap-2">✦ Hydro-Acoustic Thermal Sessions</li>
+              <li class="flex items-center gap-2">✦ Personal Custom Himalayan Brass Vessel</li>
+              <li class="flex items-center gap-2">✦ Longitudinal Sleep & Cognitive Metrics</li>
+            </ul>
+          </div>
+          <button onclick="openConsultationModal('Alpine Leadership Retreat')" class="w-full py-3.5 rounded-full bg-gold-500 text-obsidian-950 hover:brightness-110 font-bold text-xs uppercase tracking-widest transition-all shadow-lg">
+            Request Sovereign Prospectus
+          </button>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="rounded-3xl p-8 bg-obsidian-900 border border-gold-500/20 flex flex-col justify-between hover:border-gold-500/50 transition-all">
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.25em] text-gold-400 font-semibold block mb-2">Permanent Architecture</span>
+            <h3 class="font-serif text-2xl text-champagne mb-4">Acoustic Wellness Pods</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed mb-6 font-light">
+              Architectural acoustic engineering and physical installation of permanent vibroacoustic reset suites in your corporate office.
+            </p>
+            <ul class="space-y-3 text-xs text-neutral-300 mb-8">
+              <li class="flex items-center gap-2">✓ Spatial Soundfield Acoustic Geometry</li>
+              <li class="flex items-center gap-2">✓ Hand-Tuned Himalayan Bronze Bells</li>
+              <li class="flex items-center gap-2">✓ Executive Staff Certified Protocol Training</li>
+              <li class="flex items-center gap-2">✓ Biometric Heart Rate Variability Sensors</li>
+            </ul>
+          </div>
+          <button onclick="openConsultationModal('Acoustic Wellness Pods')" class="w-full py-3 rounded-full border border-gold-500/40 text-gold-400 hover:bg-gold-500 hover:text-obsidian-950 font-semibold text-xs uppercase tracking-widest transition-all">
+            Schedule Architectural Audit
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- CLIENT TESTIMONIAL CITATIONS -->
+  <!-- ========================================================================= -->
+  <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+    <div class="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center mx-auto mb-8 text-gold-400">
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+      </svg>
+    </div>
+
+    <blockquote class="font-serif text-xl sm:text-2xl md:text-3xl text-champagne italic leading-relaxed mb-8">
+      "In global finance, speed is nothing without perceptual poise. Spirits Global has given our managing partners an acoustic sanctuary to reset their autonomic nervous systems in 45 minutes flat. It is now mandatory before high-stakes capital rounds."
+    </blockquote>
+
+    <p class="text-xs uppercase tracking-[0.25em] text-gold-400 font-semibold">Managing Director & Global Head of Capital Markets</p>
+    <p class="text-[11px] text-neutral-500 mt-1">Tier-1 Private Merchant Bank • Zurich & London</p>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- CLOSING SACRED INVOCATION & SOVEREIGN INVITATION (NĀDA BINDU UPANIṢAD) -->
+  <!-- ========================================================================= -->
+  <section class="relative py-28 px-4 sm:px-6 lg:px-8 overflow-hidden border-t border-gold-500/20 bg-gradient-to-b from-obsidian-950 via-obsidian-900/80 to-obsidian-950">
+    <!-- Subtle Golden Radial Resonance Backdrop -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] bg-gold-500/10 rounded-full blur-[130px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+      <!-- Ornamental Top Filigree Divider -->
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-12 sm:w-20 h-px bg-gradient-to-r from-transparent to-gold-500/60"></span>
+        <span class="text-gold-400 text-xs">✦</span>
+        <span class="w-12 sm:w-20 h-px bg-gradient-to-l from-transparent to-gold-500/60"></span>
+      </div>
+
+      <!-- Sacred Sanskrit Invocation -->
+      <p class="font-serif text-2xl sm:text-3xl md:text-4xl gold-gradient-text tracking-[0.18em] mb-8 font-medium drop-shadow-[0_2px_18px_rgba(212,175,55,0.3)]">
+        ॐ शान्तिः शान्तिः शान्तिः
+      </p>
+
+      <!-- Upanishadic Verse Quote -->
+      <blockquote class="font-serif italic text-2xl sm:text-3xl md:text-4xl text-champagne leading-relaxed max-w-3xl mb-6 font-normal">
+        "When the mind becomes silent through sound, the true self reveals itself in its uncontaminated radiance."
+      </blockquote>
+
+      <!-- Scriptural Attribution -->
+      <p class="font-cinzel text-xs sm:text-sm uppercase tracking-[0.32em] text-gold-400 font-semibold mb-12">
+        — NĀDA BINDU UPANIṢAD
+      </p>
+
+      <!-- Subtle Gold Divider -->
+      <div class="w-24 h-px bg-gold-500/30 mb-10"></div>
+
+      <!-- Closing Invitation Statement -->
+      <p class="text-sm sm:text-base md:text-lg text-neutral-300/90 max-w-2xl font-light leading-relaxed tracking-wide mb-10">
+        We invite discerning organizations, venture partners, and private communities to explore custom wellness programs, corporate retreats, and sound healing residencies.
+      </p>
+
+      <!-- Refined Private Consultation / Residency CTA -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="openConsultationModal('Custom Bespoke Protocol')" class="px-9 py-4 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-obsidian-950 font-semibold text-xs tracking-[0.22em] uppercase hover:brightness-110 active:scale-95 transition-all shadow-[0_4px_25px_rgba(212,175,55,0.35)]">
+          Inquire For Residencies & Retreats
+        </button>
+        <button onclick="playSingingBowl(432, 'Om Shanti — 432Hz Nāda Resonance')" class="px-7 py-4 rounded-full border border-gold-500/35 text-gold-300 hover:text-gold-400 hover:border-gold-400 text-xs tracking-[0.2em] uppercase transition-all bg-obsidian-900/60 backdrop-blur-md">
+          Chime Closing 432Hz Resonance
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="border-t border-gold-500/15 bg-obsidian-950 pt-16 pb-12 text-xs text-neutral-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gold-500/10">
+        
+        <!-- Brand Info -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full border border-gold-500/40 flex items-center justify-center text-gold-400 font-cinzel text-xs font-bold">
+              SG
+            </div>
+            <span class="font-cinzel text-sm text-champagne tracking-[0.2em] font-semibold">SPIRITS GLOBAL</span>
+          </div>
+          <p class="text-neutral-400 text-xs leading-relaxed font-light">
+            Premier acoustic entrainment, restorative postural kinetics, and pulmonary mindfulness architecture for sovereign leaders.
+          </p>
+        </div>
+
+        <!-- Global Locations -->
+        <div>
+          <h5 class="text-xs uppercase tracking-widest text-champagne font-semibold mb-3">Atelier Locations</h5>
+          <ul class="space-y-2 text-xs text-neutral-400">
+            <li>Rue du Rhône 42, 1204 Genève</li>
+            <li>Berkeley Square, Mayfair, London</li>
+            <li>Marina Bay Financial Centre, Singapore</li>
+            <li>Gion Heritage Precinct, Kyoto</li>
+          </ul>
+        </div>
+
+        <!-- Direct Nav -->
+        <div>
+          <h5 class="text-xs uppercase tracking-widest text-champagne font-semibold mb-3">Modalities</h5>
+          <ul class="space-y-2 text-xs text-neutral-400">
+            <li><a href="#disciplines" class="hover:text-gold-400 transition-colors">432Hz Sound Entrainment</a></li>
+            <li><a href="#disciplines" class="hover:text-gold-400 transition-colors">Somatic Posture Realignment</a></li>
+            <li><a href="#disciplines" class="hover:text-gold-400 transition-colors">Cognitive Breathwork</a></li>
+            <li><a href="#clinical" class="hover:text-gold-400 transition-colors">HRV Clinical Metrics</a></li>
+          </ul>
+        </div>
+
+        <!-- Concierge Direct -->
+        <div>
+          <h5 class="text-xs uppercase tracking-widest text-champagne font-semibold mb-3">Private Concierge</h5>
+          <p class="text-xs text-neutral-400 mb-3">Direct confidential liaison for enterprise chairmen and family offices.</p>
+          <a href="mailto:concierge@spiritsglobal.luxury" class="text-gold-400 hover:underline tracking-wider">concierge@spiritsglobal.luxury</a>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Legal -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>© 2026 SPIRITS GLOBAL ATELIER. All Worldwide Rights Reserved.</p>
+        <div class="flex items-center space-x-6 text-[11px]">
+          <a href="#" class="hover:text-neutral-300">Confidentiality Protocol</a>
+          <a href="#" class="hover:text-neutral-300">Medical Disclosures</a>
+          <a href="#" class="hover:text-neutral-300">Bespoke Architecture</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- FLOATING "SYNC YOUR 10 PHOTOS & EMBED" STUDIO BAR (BOTTOM-LEFT) -->
+  <!-- ========================================================================= -->
+  <div class="fixed bottom-5 left-5 z-40 flex flex-wrap items-center gap-2 p-2 rounded-2xl glass-luxury border border-gold-500/40 shadow-[0_10px_35px_rgba(0,0,0,0.85)]">
+    <button onclick="openPhotoSyncStudio()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-obsidian-950 font-semibold text-[11px] uppercase tracking-wider flex items-center gap-2 hover:brightness-110 transition-all shadow-md">
+      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+      </svg>
+      <span>Load My 10 Photos</span>
+    </button>
+    <button onclick="exportEmbeddedHTML()" class="px-3 py-2 rounded-xl bg-obsidian-900/90 border border-gold-500/30 text-gold-300 hover:text-gold-400 hover:border-gold-400 text-[11px] uppercase tracking-wider flex items-center gap-1.5 transition-all" title="Download single HTML file with all 10 photos permanently baked in as Base64">
+      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+      </svg>
+      <span class="hidden sm:inline">Download Embedded HTML</span>
+    </button>
+  </div>
+
+  <!-- Hidden File Inputs for Bulk (10 Photos) & Single Photo Swapping -->
+  <input type="file" id="bulkPhotoInput" multiple accept="image/*" class="hidden" onchange="handleBulkFilesSelected(this.files)">
+  <input type="file" id="singlePhotoInput" accept="image/*" class="hidden" onchange="handleSingleFileSelected(this.files)">
+
+  <!-- ========================================================================= -->
+  <!-- MODALS: PHOTO SYNC STUDIO, LIGHTBOX & CONSULTATION BOOKING -->
+  <!-- ========================================================================= -->
+
+  <!-- Photo Sync & Permanent Base64 Embed Studio Modal -->
+  <div id="photoSyncModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300" onclick="closePhotoSyncStudio(event)">
+    <div class="relative max-w-4xl w-full bg-obsidian-900 border border-gold-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+      <button onclick="closePhotoSyncStudio(null, true)" class="absolute top-6 right-6 text-neutral-400 hover:text-gold-400">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-1">Permanent Portfolio Photo Vault</span>
+        <h3 class="font-serif text-2xl sm:text-3xl text-champagne">Sync & Embed Your 10 Photographs</h3>
+        <p class="text-xs text-neutral-400 mt-1 leading-relaxed">
+          Select or drag-and-drop your 10 photographs below. They will automatically map to their exact filenames across <strong>Ethos</strong>, <strong>Disciplines 01, 02 & 03</strong>, and the <strong>10-Card Experience Gallery</strong>, persist in your browser's Vault, and can be exported into a single self-contained <code>luxury_portfolio.html</code> file so they are never lost.
+        </p>
+      </div>
+
+      <!-- Drag & Drop Zone -->
+      <div id="dropZoneArea" onclick="document.getElementById('bulkPhotoInput').click()" class="border-2 border-dashed border-gold-500/40 hover:border-gold-400 rounded-2xl p-6 text-center cursor-pointer bg-obsidian-950/60 hover:bg-obsidian-850/70 transition-all mb-6">
+        <div class="w-12 h-12 rounded-full bg-gold-500/15 border border-gold-500/40 flex items-center justify-center mx-auto mb-3 text-gold-400">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
+        </div>
+        <p class="text-sm text-champagne font-medium">Click to Select All 10 Photos — or Drag & Drop Them Anywhere</p>
+        <p class="text-[11px] text-neutral-400 mt-1">Automatically matches <code>810281314...jpg</code>, <code>798687161...jpg</code>, <code>810449071...jpg</code>, <code>IMG_1698.jpg</code>, <code>798035321...jpg</code>, <code>IMG_1713.jpg</code>, <code>IMG_1734.jpg</code>, <code>IMG_1720.jpg</code>, <code>798488639...jpg</code>, <code>IMG_1735.jpg</code></p>
+      </div>
+
+      <!-- Live 10-Slot Status Grid -->
+      <div id="photoVaultGrid" class="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-6"></div>
+
+      <!-- Bottom Actions -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-gold-500/15">
+        <button onclick="resetPhotoVault()" class="text-xs text-neutral-400 hover:text-red-400 uppercase tracking-widest transition-colors">
+          Reset Stored Overrides
+        </button>
+        <div class="flex flex-wrap items-center gap-3">
+          <button onclick="exportEmbeddedHTML()" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-obsidian-950 font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-lg flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span>Download HTML with Embedded Photos</span>
+          </button>
+          <button onclick="closePhotoSyncStudio(null, true)" class="px-5 py-2.5 rounded-full border border-gold-500/30 text-champagne hover:border-gold-400 text-xs uppercase tracking-widest">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300" onclick="closeLightbox(event)">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <!-- Top Action Controls -->
+      <div class="w-full flex items-center justify-between mb-3">
+        <button id="lightboxSwapBtn" onclick="triggerSinglePhotoUpload(currentLightboxPhotoId)" class="px-3.5 py-1.5 rounded-full bg-obsidian-900 border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-obsidian-950 text-xs uppercase tracking-widest flex items-center gap-2 transition-all">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+          <span>Replace This Photo</span>
+        </button>
+        <button onclick="closeLightbox(null, true)" class="p-2 text-neutral-400 hover:text-gold-400 transition-colors">
+          <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Lightbox Image -->
+      <div class="rounded-2xl overflow-hidden border border-gold-500/30 shadow-2xl bg-obsidian-900 w-full max-h-[75vh] flex items-center justify-center">
+        <img id="lightboxImg" src="" alt="Full Resolution Spirits Global Portfolio" class="max-h-[75vh] w-auto max-w-full object-contain">
+      </div>
+      
+      <!-- Caption / Details -->
+      <div class="w-full mt-4 text-center">
+        <h3 id="lightboxTitle" class="font-serif text-xl text-champagne"></h3>
+        <p id="lightboxDesc" class="text-xs text-neutral-400 mt-1 max-w-xl mx-auto"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive Consultation Modal -->
+  <div id="consultationModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="relative max-w-lg w-full bg-obsidian-900 border border-gold-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl">
+      
+      <button onclick="closeConsultationModal()" class="absolute top-6 right-6 text-neutral-400 hover:text-gold-400">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-1">Confidential Inquiry</span>
+        <h3 class="font-serif text-2xl text-champagne">Request Executive Dossier</h3>
+        <p class="text-xs text-neutral-400 mt-1">Our private client concierge responds within 4 business hours.</p>
+      </div>
+
+      <form id="consultationForm" onsubmit="handleConsultationSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-[11px] uppercase tracking-wider text-neutral-300 mb-1">Principal / Executive Name</label>
+          <input type="text" required placeholder="e.g. Lord Alexander Vance" class="w-full px-4 py-3 rounded-xl bg-obsidian-850 border border-gold-500/20 text-neutral-200 text-xs focus:outline-none focus:border-gold-500 transition-colors">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] uppercase tracking-wider text-neutral-300 mb-1">Corporate Title</label>
+            <input type="text" required placeholder="e.g. Chief Executive Officer" class="w-full px-4 py-3 rounded-xl bg-obsidian-850 border border-gold-500/20 text-neutral-200 text-xs focus:outline-none focus:border-gold-500 transition-colors">
+          </div>
+          <div>
+            <label class="block text-[11px] uppercase tracking-wider text-neutral-300 mb-1">Organization</label>
+            <input type="text" required placeholder="e.g. Vance Capital Partners" class="w-full px-4 py-3 rounded-xl bg-obsidian-850 border border-gold-500/20 text-neutral-200 text-xs focus:outline-none focus:border-gold-500 transition-colors">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] uppercase tracking-wider text-neutral-300 mb-1">Confidential Email</label>
+          <input type="email" required placeholder="executive@enterprise.com" class="w-full px-4 py-3 rounded-xl bg-obsidian-850 border border-gold-500/20 text-neutral-200 text-xs focus:outline-none focus:border-gold-500 transition-colors">
+        </div>
+
+        <div>
+          <label class="block text-[11px] uppercase tracking-wider text-neutral-300 mb-1">Desired Program / Modality</label>
+          <select id="programSelect" class="w-full px-4 py-3 rounded-xl bg-obsidian-850 border border-gold-500/20 text-neutral-200 text-xs focus:outline-none focus:border-gold-500 transition-colors">
+            <option value="Alpine Leadership Retreat">Alpine Leadership Retreat (Flagship)</option>
+            <option value="The Boardroom Reset">The Boardroom Reset (Quarterly)</option>
+            <option value="Permanent Acoustic Pod">Permanent Corporate Acoustic Pod</option>
+            <option value="Custom Bespoke Protocol">Custom Bespoke Protocol</option>
+          </select>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3.5 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-obsidian-950 font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all shadow-lg">
+            Submit Confidential Request
+          </button>
+        </div>
+      </form>
+
+      <!-- Success confirmation box (in-modal message replacing alerts) -->
+      <div id="bookingSuccessBox" class="hidden text-center py-8 space-y-4">
+        <div class="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500/40 text-gold-400 flex items-center justify-center mx-auto">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h4 class="font-serif text-xl text-champagne">Dossier Request Registered</h4>
+        <p class="text-xs text-neutral-400 max-w-xs mx-auto">
+          Thank you. Our Private Concierge has received your transmission and will dispatch our encrypted corporate prospectus.
+        </p>
+        <button onclick="closeConsultationModal()" class="px-6 py-2 rounded-full border border-gold-500/30 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-500/10 transition-colors">
+          Return To Atelier
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: SMART 10-PHOTO LOADER, INDEXEDDB VAULT & WEB AUDIO SYNTH -->
+  <!-- ========================================================================= -->
+  <!-- HOMEPAGE MODULES -->
+  <script src="utils/audio.js"></script>
+  <script src="js/services/singing-bowl.js"></script>
+  <script src="js/services/file-upload.js"></script>
+  <script src="components/toast.home.js"></script>
+  <script src="components/hero.js"></script>
+  <script src="components/gallery.js"></script>
+  <script src="components/consultation.js"></script>
+  <script src="components/photo-sync-studio.js"></script>
+  <script src="components/lightbox.js"></script>
+  <script src="components/navigation.js"></script>
+  <script src="js/pages/home.js"></script>
+</body>
+</html>

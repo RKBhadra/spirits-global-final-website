@@ -1,0 +1,47 @@
+    /* Custom Luxury Glassmorphism & Gold Gradients */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF6D6 0%, #D4AF37 50%, #AA7B25 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .gold-shimmer-border {
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .gold-shimmer-border:hover {
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.2);
+    }
+
+    .glass-luxury {
+      background: rgba(13, 15, 20, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Soundwave ripple aesthetic */
+    @keyframes soundwave {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.04); opacity: 0.4; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .wave-pulse {
+      animation: soundwave 4s ease-in-out infinite;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08090C;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2A2415;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D4AF37;
+    }
