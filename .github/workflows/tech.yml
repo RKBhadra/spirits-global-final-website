@@ -1,0 +1,23 @@
+
+name: Tech Branch Workflow
+
+on:
+  push:
+    branches:
+      - Tech
+
+  pull_request:
+    branches:
+      - Tech
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test workflow
+        run: echo "Tech branch workflow is running!"
+
