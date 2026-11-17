@@ -32,6 +32,7 @@
         const currentSrc = userLoadedPhotos[meta.id] || (sampleImg ? sampleImg.src : meta.fallbackUrl);
         const isCustomSynced = Boolean(userLoadedPhotos[meta.id]);
 
+        /*
         const card = document.createElement('div');
         card.className = 'relative rounded-xl overflow-hidden border border-gold-500/30 bg-obsidian-950 group cursor-pointer flex flex-col';
         card.onclick = () => triggerSinglePhotoUpload(meta.id);
@@ -41,7 +42,7 @@
             <span class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded-full text-[9px] font-mono uppercase ${isCustomSynced ? 'bg-gold-500 text-obsidian-950 font-bold' : 'bg-obsidian-950/85 text-gold-400 border border-gold-500/30'}">
               #${String(meta.id).padStart(2, '0')} ${isCustomSynced ? '• Synced' : ''}
             </span>
-          </div>
+          </div>*/
           <div class="p-2 text-left">
             <p class="text-[10px] text-champagne font-medium truncate">${meta.title}</p>
             <p class="text-[9px] text-neutral-500 truncate">${meta.filename}</p>
